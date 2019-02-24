@@ -72,13 +72,12 @@ class Body extends React.Component {
     else if(this.props.page === PagesEnum.PROJECTS){
       return(
         <div>
-          there should be the game 
           <FiveThirthy/>
         </div>
       )
     }
     return(
-      <div> This it not home page</div>
+      <div> This it the contact page</div>
     )
   }
 }
@@ -142,34 +141,12 @@ class App extends Component {
     });
   }
 
-  /* TODO test funcionality remove */
-  inPage(currPage, pageName) {
-      if(currPage === pageName){
-        return(
-          <label>The two page name is identical</label>
-        )
-      }else{
-        return(
-          <label>The two page name is not identical</label>
-        )
-      }
-    
-  }
-
   render() {
     return (
       <div>
       <Header page = {this.state.page} onClick={(i) => this.handleClick(i) } />
       <div class="CCcontent">
         <Body page ={this.state.page}/>
-      </div>
-      <br></br>
-      <button onClick={() => {this.handleClick("Dynamic")}} >Go Dynamic {this.state.page}</button>
-      <button onClick={() => {this.handleClick("home")}} >Go home {this.state.page}</button>
-      {/* TODO test funcionality remove */}
-      <div>State bar <br/>
-                <span>state : {this.state.page}</span>
-                {<span> {this.inPage(this.state.page, "home")} </span>}
       </div>
       {getFooter()}
       </div>

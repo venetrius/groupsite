@@ -148,8 +148,6 @@ class FiveThirthy extends React.Component {
     render(){
         return(
             <div>
-                This is the game Class.
-                <img src={logo} alt="logo"></img>
                 <Game/>
             </div>
         );
