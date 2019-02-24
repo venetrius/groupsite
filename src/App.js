@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
 
-
+const PagesEnum = Object.freeze({"HOME":"Home", "PROJECTS":"Projects", "CONTACT":"Contact",})
 
 class  Header extends React.Component{
 
@@ -33,10 +33,9 @@ class  Header extends React.Component{
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          {this.renderNavItem("Dynamic")}
-          {this.renderNavItem("home")}
-          {this.renderNavItem("about")}
-          {this.renderNavItem("contact")}
+          {this.renderNavItem(PagesEnum.HOME)}
+          {this.renderNavItem(PagesEnum.PROJECTS)}
+          {this.renderNavItem(PagesEnum.CONTACT)}
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
@@ -123,7 +122,7 @@ class App extends Component {
   constructor(props) {
     super (props);
     this.state = {
-      page: "home"
+      page: PagesEnum.HOME
     };
   }
 
