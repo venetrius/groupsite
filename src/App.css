@@ -31,3 +31,12 @@
     transform: rotate(360deg);
   }
 }
+
+.CCnavigate {
+  margin-bottom: 100px;
+  width: 100%;
+}
+
+.CCcontent {
+  padding-top: 100px;
+}
