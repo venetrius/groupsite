@@ -37,6 +37,7 @@ body {
     float: left;
     font-size: 24px;
     font-weight: bold;
+    color: grey;
     line-height: 34px;
     height: 34px;
     margin-right: -1px;
@@ -80,3 +81,6 @@ body {
     margin-left: 20px;
   }
   
+  span {
+    padding: 5px;
+  }

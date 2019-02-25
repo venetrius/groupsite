@@ -123,18 +123,31 @@ class Board extends React.Component {
         return 30 - this.state.sum - 5 + this.state.stepNumber;
     }
 
-    render() {
-  
+    restartGame(){
+      this.setState({
+        stepNumber: 1,
+        sum: 0,
+        pointAI: 0,
+        pointP: 0,
+        isEnd: false  
+      });
+    }
 
-      return (
+    render() {
+        return (
         <div>
             <div className="container" id="game">
+              <div>
+                <h3>result</h3><span>Player</span><span>{this.state.pointP}</span>
+                    <span>Computes</span><span>{this.state.pointAI}</span>
+              </div>
               <div class="row row-content">
                 <div className="game-board col-12 col-sm-4 rm-6">
                   <Board max={this.getMax()} onClick={(i) => this.handleClick(i)} />
                 </div>
                 <div className="game-info  col-12 col-sm-4">
                   <div>{this.state.stepNumber} <span>{this.state.pointP}</span> <span>{this.state.pointAI}</span></div>
+                  <button onClick={() => this.restartGame()}>Restart</button>
                 </div>
               </div>
           </div>
