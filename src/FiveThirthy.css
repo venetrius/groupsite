@@ -19,6 +19,14 @@ body {
     display: table;
   }
   
+  .board-row:first-child{
+    border-top:4px solid black;
+  }
+
+  .board-row:last-child{
+    border-bottom:4px solid black;
+  }
+
   .status {
     margin-bottom: 10px;
   }
@@ -47,6 +55,14 @@ body {
     background:rgb(34, 163, 29);
   }
   
+  .square:first-child {
+    border-left:4px solid black;
+  }
+
+  .square:last-child {
+    border-right:4px solid black;
+  }
+
   .square:focus {
     outline: none;
   }
