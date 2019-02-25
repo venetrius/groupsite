@@ -24,7 +24,7 @@ body {
   }
   
   .square {
-    background: #fff;
+    background:  rgb(27, 27, 25);
     border: 1px solid #999;
     float: left;
     font-size: 24px;
@@ -38,9 +38,13 @@ body {
     width: 34px;
   }
 
-  .inactiveSquare{
-      background: rgb(27, 27, 25);
-      color: aquamarine;
+  .activeSquare{
+    background:rgb(117, 168, 40);
+  }
+
+  .activeSquare:hover{
+    font-size: 25px;
+    background:rgb(34, 163, 29);
   }
   
   .square:focus {

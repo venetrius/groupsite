@@ -6,7 +6,7 @@ function Square (props) {
     if(props.max < props.value){
         return (
             <button 
-              className="square inactiveSquare"
+              className="square"
             >
               {props.value}
             </button>
@@ -15,7 +15,7 @@ function Square (props) {
     return (
       <button 
         onClick={props.onClick} 
-        className="square"
+        className="square activeSquare"
       >
         {props.value}
       </button>
@@ -35,7 +35,7 @@ class Board extends React.Component {
   
     render() {
       return (
-        <div>
+        <div class="gameboard">
           <div className="board-row">
             {this.renderSquare(1)}
             {this.renderSquare(2)}
