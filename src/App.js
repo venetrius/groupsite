@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
 import FiveThirthy from './FiveThirthy';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedinIn } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core'
+
 
 const PagesEnum = Object.freeze({"HOME":"Home", "PROJECTS":"Projects", "CONTACT":"Contact",})
 
@@ -51,7 +57,7 @@ class  Header extends React.Component{
 class Body extends React.Component {
 
   render(){
-    if(this.props.page === "home"){
+    if(this.props.page === PagesEnum.HOME){
       return(
         <div>
           <p>
@@ -71,8 +77,9 @@ class Body extends React.Component {
     }
     else if(this.props.page === PagesEnum.PROJECTS){
       return(
-        <div>
+        <div class="project-container">
           <FiveThirthy/>
+          <br></br>
         </div>
       )
     }
@@ -84,42 +91,19 @@ class Body extends React.Component {
 
 function getFooter(){
   return (
-<footer class="page-footer font-small  bg-light pt-4">
+<footer class="page-footer font-small  bg-light darken-1 pt-4">
   <div class="row container-fluid text-center text-md-left">
-    <div class="col-md-6 mt-md-0 mt-3">
-          <h5 class="text-uppercase">Footer Content</h5>
-          <p>Here you can use rows and columns to organize your footer content.</p>
-    </div>
-    <hr class="clearfix w-100 d-md-none pb-3"/>
     <div class="col-md-3 mb-md-0 mb-3">
             <h5 class="text-uppercase">Links</h5>
-            <ul class="list-unstyled">
-              <li><a href="#!">Link 1</a></li>
-              <li><a href="#!">Link 2</a></li>
-              <li><a href="#!">Link 3</a></li>
-              <li><a href="#!">Link 4</a></li>
+            <ul class="list-unstyled inline">
+              <li><FontAwesomeIcon icon={ faThumbsUp  }/></li>
+              <li><FontAwesomeIcon icon={ library }/></li>
+              <li><a href="mailto:gergelygjuhasz@gmail.com"><FontAwesomeIcon icon={ faEnvelopeSquare }/></a></li>
             </ul>
     </div>
-    <div class="col-md-3 mb-md-0 mb-3">
-            <h5 class="text-uppercase">Links</h5>
-            <ul class="list-unstyled">
-              <li>
-                <a href="#!">Link 1</a>
-              </li>
-              <li>
-                <a href="#!">Link 2</a>
-              </li>
-              <li>
-                <a href="#!">Link 3</a>
-              </li>
-              <li>
-                <a href="#!">Link 4</a>
-              </li>
-            </ul>
-          </div>
-  </div>
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    </div>
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://gergelyjuhasz.ca"> gergelyjuhasz.ca</a>
     </div>
 </footer>
 

@@ -25,6 +25,10 @@ nav {
   z-index: 100;
 }
 
+.nav-link:hover{
+  cursor: pointer;
+}
+
 footer {
   position: fixed;
   left: 0;
@@ -53,4 +57,10 @@ footer {
 
 .CCcontent {
   padding-top: 100px;
+  padding-bottom: 520px;
+}
+
+.project-container{
+  border: #282c34;
+  border-style: solid;
 }

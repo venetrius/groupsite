@@ -138,17 +138,28 @@ class Board extends React.Component {
         <div>
             <div className="container" id="game">
               <div>
-                <h3>result</h3><span>Player</span><span>{this.state.pointP}</span>
+                <h3>Five times thirty</h3><span>Player</span><span>{this.state.pointP}</span>
                     <span>Computes</span><span>{this.state.pointAI}</span>
               </div>
               <div class="row row-content">
-                <div className="game-board col-12 col-sm-4 rm-6">
+                <div className="game-board col-12 col-md-4">
                   <Board max={this.getMax()} onClick={(i) => this.handleClick(i)} />
                 </div>
-                <div className="game-info  col-12 col-sm-4">
+                <div className="game-info  col-12 col-md-2">
                   <div>{this.state.stepNumber} <span>{this.state.pointP}</span> <span>{this.state.pointAI}</span></div>
-                  <button onClick={() => this.restartGame()}>Restart</button>
+                  <button class="btn-danger" onClick={() => this.restartGame()}>Restart</button>
                 </div>
+                <details open className="game-info  col-12 col-md-4">
+                  <summary>Rules</summary>
+                  <br/>
+                  <ol className="gamerule">
+                  <li>There are five round. At each round choose a number</li>
+                  <li>The numer has to be greater than zero</li>
+                  <li>The sum of the numbers played in the five rounds has to be thirty</li>
+                  <li>The player with the heigher number wons that round, and gains a point</li>
+                  <li>At the end of the fifth round, the player with more points wins</li>
+                  </ol>
+                </details>
               </div>
           </div>
         </div>
