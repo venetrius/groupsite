@@ -4,9 +4,9 @@ import './App.css';
 import FiveThirthy from './FiveThirthy';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedinIn } from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEnvelopeSquare, faLaptop} from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {faTwitter} from 'bootstrap-social';
 
 
 const PagesEnum = Object.freeze({"HOME":"Home", "PROJECTS":"Projects", "CONTACT":"Contact",})
@@ -32,7 +32,7 @@ class  Header extends React.Component{
   render(){
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed CCnavigate">
-      <a class="navbar-brand" href="#" > <img src={logo} alt="logo"></img>  </a>
+      <a class="navbar-brand" onClick={() =>{this.props.onClick(PagesEnum.HOME)}}> <img src={logo} alt="logo"></img>  </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -92,19 +92,18 @@ class Body extends React.Component {
 function getFooter(){
   return (
 <footer class="page-footer font-small  bg-light darken-1 pt-4">
-  <div class="row container-fluid text-center text-md-left">
-    <div class="col-md-3 mb-md-0 mb-3">
-            <h5 class="text-uppercase">Links</h5>
-            <ul class="list-unstyled inline">
-              <li><FontAwesomeIcon icon={ faThumbsUp  }/></li>
-              <li><FontAwesomeIcon icon={ library }/></li>
-              <li><a href="mailto:gergelygjuhasz@gmail.com"><FontAwesomeIcon icon={ faEnvelopeSquare }/></a></li>
-            </ul>
+  <div class="row justify-content-start">
+    
+    <div class="col-12 col-md-6">
+      <a href="mailto:gergelygjuhasz@gmail.com"><FontAwesomeIcon icon={ faEnvelopeSquare }/><span></span>gergelygjuhasz@gmail.com</a>
     </div>
+    <div class="col-12 col-md-6">
+      <a target="blank" href="https://github.com/venetrius"><FontAwesomeIcon icon={ faLaptop }/><span>https://github.com/venetrius</span></a>
     </div>
+  </div>
   <div class="footer-copyright text-center py-3">© 2019 Copyright:
-      <a href="https://gergelyjuhasz.ca"> gergelyjuhasz.ca</a>
-    </div>
+      <a target="blank" href="http://gergelyjuhasz.ca"> gergelyjuhasz.ca</a>
+  </div>
 </footer>
 
     );

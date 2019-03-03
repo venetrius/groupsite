@@ -25,6 +25,11 @@ nav {
   z-index: 100;
 }
 
+.navbar-brand>img{
+    border-radius: 40%;
+    opacity: 0.5;
+}
+
 .nav-link:hover{
   cursor: pointer;
 }
