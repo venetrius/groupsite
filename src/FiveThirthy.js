@@ -84,7 +84,29 @@ class Board extends React.Component {
       }
   }
 
-  class Game extends React.Component {
+class History extends React.Component{
+
+  createTable(){
+    let table = [];
+    for (let i = 0; i < this.props.history.length; i+= 2) {
+      table.push(<li>{this.props.history[i]} <span>-</span> {this.props.history[i+1]}</li>);
+    }
+    return table;
+  }
+
+  render(){return(
+     <div>
+       <h6>history</h6>
+       <ol className="history" >
+       {this.createTable()}
+       </ol>    
+     </div>
+  );}
+
+}
+
+
+class Game extends React.Component {
 
     constructor(props) {
       super (props);
@@ -95,7 +117,8 @@ class Board extends React.Component {
         pointAI: 0,
         pointP: 0,
         isEnd: false,
-        history: "",
+        history: [],
+        token: "",
         pBet: -1
       };
     }
@@ -144,13 +167,17 @@ class Board extends React.Component {
     getRoundResult(aIbet){
       console.log("aibet: " + aIbet);
       var i = this.state.pBet;
+      let hist = this.state.history;
+      hist.push(i);
+      hist.push(aIbet);
       const pGain = i > aIbet ? 1 : (i < aIbet ? 0 : 0.5);
         this.setState({
           stepNumber: this.state.stepNumber + 1,
           sum: this.state.sum + i,
           pointAI: this.state.pointAI + 1 - pGain,
           pointP: this.state.pointP + pGain,
-          history: this.state.history + "_" + aIbet + "_" + i,
+          history: hist,
+          token: this.state.token+ "_" + aIbet + "_" + i,
           pBet : -1
         });
     }
@@ -166,13 +193,14 @@ class Board extends React.Component {
         pointAI: 0,
         pointP: 0,
         isEnd: false,
-        history: "",
+        history: [],
+        token: "",
         pBet: -1,
       });
     }
 
     getGET(){
-      return this.URI + this.state.stepNumber +this.state.history;
+      return this.URI + this.state.stepNumber +this.state.token;
     }
 
     render() {
@@ -190,6 +218,8 @@ class Board extends React.Component {
                 <div className="game-info  col-12 col-md-2">
                   <div>{this.state.stepNumber} <span>{this.state.pointP}</span> <span>{this.state.pointAI}</span></div>
                   <button class="btn-danger" onClick={() => this.restartGame()}>Restart</button>
+                  <br></br>
+                  <History history={this.state.history}></History>
                 </div>
                 <details open className="game-info  col-12 col-md-4">
                   <summary>Rules</summary>

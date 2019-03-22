@@ -79,6 +79,11 @@ body {
     flex-direction: row;
   }
   
+  .history {
+    padding: 0%;
+    padding-left: 10%;
+  }
+
   .game-info {
     margin-left: 20px;
   }
