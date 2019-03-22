@@ -85,14 +85,18 @@ class Board extends React.Component {
   }
 
   class Game extends React.Component {
+
     constructor(props) {
       super (props);
+      this.URI = "http://165.227.40.75/bet?state=";
       this.state = {
         stepNumber: 1,
         sum: 0,
         pointAI: 0,
         pointP: 0,
-        isEnd: false
+        isEnd: false,
+        history: "",
+        pBet: -1
       };
     }
   
@@ -105,18 +109,50 @@ class Board extends React.Component {
         return 0.5;
     }
 
+    fetchBet(token, callback){
+      console.log(token);
+      return (fetch("http://165.227.40.75/bet?state="+token)
+      
+        .then(function(response)
+         {
+        return response.json();
+        })
+        .then(function(myJson)
+         {
+          console.log(myJson);
+          var aiBet = myJson.bet;
+          console.log("bet" + aiBet);
+          callback(aiBet);
+         }))
+    }
+
     handleClick(i) {
-      if(this.state.stepNumber > 5){
-          return;
+      if (this.state.stepNumber > 5) {
+        return;
       }
-      const aIbet = 6;
-      const pGain = this.evaluateBets(i, aIbet);
       this.setState({
-        stepNumber: this.state.stepNumber + 1,
-        sum: this.state.sum + i,
-        pointAI: this.state.pointAI + 1 - pGain,
-        pointP: this.state.pointP + pGain
+        stepNumber: this.state.stepNumber,
+        sum: this.state.sum,
+        pointAI: this.state.pointAI,
+        pointP: this.state.pointP,
+        history: this.state.history,
+        pBet: i 
       });
+      this.fetchBet(this.getGET(), (aiBet, message) => this.getRoundResult(aiBet));
+    }
+
+    getRoundResult(aIbet){
+      console.log("aibet: " + aIbet);
+      var i = this.state.pBet;
+      const pGain = i > aIbet ? 1 : (i < aIbet ? 0 : 0.5);
+        this.setState({
+          stepNumber: this.state.stepNumber + 1,
+          sum: this.state.sum + i,
+          pointAI: this.state.pointAI + 1 - pGain,
+          pointP: this.state.pointP + pGain,
+          history: this.state.history + "_" + aIbet + "_" + i,
+          pBet : -1
+        });
     }
 
     getMax(){
@@ -129,8 +165,14 @@ class Board extends React.Component {
         sum: 0,
         pointAI: 0,
         pointP: 0,
-        isEnd: false  
+        isEnd: false,
+        history: "",
+        pBet: -1,
       });
+    }
+
+    getGET(){
+      return this.URI + this.state.stepNumber +this.state.history;
     }
 
     render() {
