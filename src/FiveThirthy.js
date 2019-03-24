@@ -110,7 +110,8 @@ class Game extends React.Component {
 
     constructor(props) {
       super (props);
-      this.URI = "http://165.227.40.75/bet?state=";
+      //this.URI = "http://165.227.40.75/bet?state=";  //for server
+      this.URI = "http://localhost:8080/bet?state=";    //for local usage
       this.state = {
         stepNumber: 1,
         sum: 0,
@@ -132,10 +133,24 @@ class Game extends React.Component {
         return 0.5;
     }
 
-    fetchBet(token, callback){
-      console.log(token);
-      return (fetch("http://165.227.40.75/bet?state="+token)
-      
+  postGame() {
+    console.log("Posting to" + this.URI+this.state.token);
+    fetch(this.URI + this.state.token, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+     /* body: JSON.stringify({
+        firstParam: 'yourValue',
+        secondParam: 'yourOtherValue',
+      })*/
+    });
+  }
+
+    fetchBet(request, callback){
+      console.log(request);
+      return (fetch(request)
         .then(function(response)
          {
         return response.json();
@@ -146,7 +161,7 @@ class Game extends React.Component {
           var aiBet = myJson.bet;
           console.log("bet" + aiBet);
           callback(aiBet);
-         }))
+         }));
     }
 
     handleClick(i) {
@@ -161,7 +176,7 @@ class Game extends React.Component {
         history: this.state.history,
         pBet: i 
       });
-      this.fetchBet(this.getGET(), (aiBet, message) => this.getRoundResult(aiBet));
+      this.fetchBet(this.getGET(), (aiBet) => this.getRoundResult(aiBet));
     }
 
     getRoundResult(aIbet){
@@ -180,6 +195,9 @@ class Game extends React.Component {
           token: this.state.token+ "_" + aIbet + "_" + i,
           pBet : -1
         });
+        if(this.state.stepNumber > 5){
+            this.postGame();
+        }
     }
 
     getMax(){
@@ -216,7 +234,7 @@ class Game extends React.Component {
                   <Board max={this.getMax()} onClick={(i) => this.handleClick(i)} />
                 </div>
                 <div className="game-info  col-12 col-md-2">
-                  <div>{this.state.stepNumber} <span>{this.state.pointP}</span> <span>{this.state.pointAI}</span></div>
+                  <div>{Math.min(5,this.state.stepNumber)} <span>{this.state.pointP}</span> <span>{this.state.pointAI}</span></div>
                   <button class="btn-danger" onClick={() => this.restartGame()}>Restart</button>
                   <br></br>
                   <History history={this.state.history}></History>
