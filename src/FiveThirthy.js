@@ -89,7 +89,7 @@ class History extends React.Component{
   createTable(){
     let table = [];
     for (let i = 0; i < this.props.history.length; i+= 2) {
-      table.push(<li>{this.props.history[i]} <span>-</span> {this.props.history[i+1]}</li>);
+      table.push(<li key={i}>{this.props.history[i]} <span>-</span> {this.props.history[i+1]}</li>);
     }
     return table;
   }
