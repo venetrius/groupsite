@@ -110,8 +110,8 @@ class Game extends React.Component {
 
     constructor(props) {
       super (props);
-      //this.URI = "http://165.227.40.75/bet?state=";  //for server
-      this.URI = "http://localhost:8080/bet?state=";    //for local usage
+      this.URI = "http://165.227.40.75/bet?state=";  //for server
+      //this.URI = "http://localhost:8080/bet?state=";    //for local usage
       this.state = {
         stepNumber: 1,
         sum: 0,
