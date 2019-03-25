@@ -23,6 +23,7 @@ class FttSShowCase extends React.Component {
                     <span>Test Driven Development</span>
                     <span>Maven</span>
                     <span>Sping Boot</span>
+                    <span>MySQL</span>
                       <span>DigitalOcean</span>
                       <span>Ubuntu 18.10</span>
                       <span>REST API</span>
