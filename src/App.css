@@ -69,3 +69,15 @@ footer {
   border: #282c34;
   border-style: solid;
 }
+
+.projectSummary{
+  font:bold;
+  font-size:180%;
+  text-color:green;
+}
+
+.detailSummary{
+  font:bold;
+  font-size:130%;
+  text-color:green;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
 import FiveThirthy from './FiveThirthy';
+import FttSShowCase from  './FttSShowCase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelopeSquare, faLaptop} from '@fortawesome/free-solid-svg-icons';
@@ -77,9 +78,16 @@ class Body extends React.Component {
     }
     else if(this.props.page === PagesEnum.PROJECTS){
       return(
+        <div>
         <div class="project-container">
           <FiveThirthy/>
           <br></br>
+          
+        </div>
+        <br/><br/>
+        <div className="project-container">
+          <FttSShowCase/>
+        </div>
         </div>
       )
     }
