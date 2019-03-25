@@ -221,13 +221,34 @@ class Game extends React.Component {
       return this.URI + this.state.stepNumber +this.state.token;
     }
 
+  getWarning() {
+    if (this.props.showWarning) {
+      return (
+        <span class="alert alert-warning" role="alert">
+          Only works with HTTP (not with HTTPS)!
+      <button onClick={this.props.dismissWarning} type="button" class="close" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+        </span>)
+    }
+  }
+
     render() {
         return (
         <div>
             <div className="container" id="game">
-              <div>
-                <h3>Five times thirty</h3><span>Player</span><span>{this.state.pointP}</span>
-                    <span>Computes</span><span>{this.state.pointAI}</span>
+              
+                <h3>Five times thirty
+                  
+                </h3>
+              <div class="row row-content">    
+                <div>
+                    <span>Player</span><span>{this.state.pointP}</span>
+                    <span>Computer</span><span>{this.state.pointAI}</span>
+                </div>
+                <div>
+                    <span></span>{this.getWarning()}
+                </div>
               </div>
               <div class="row row-content">
                 <div className="game-board col-12 col-md-4">
@@ -259,10 +280,23 @@ class Game extends React.Component {
   
 class FiveThirthy extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      showWarning: true
+    };
+  }
+
+  dismissWarning(){
+    this.setState({
+      showWarning: false
+    });
+  }
+
     render(){
         return(
             <div>
-                <Game/>
+                <Game showWarning={this.state.showWarning} dismissWarning = {() => this.dismissWarning()}/>
             </div>
         );
     }

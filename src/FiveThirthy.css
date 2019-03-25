@@ -13,6 +13,10 @@ body {
     display: table;
   }
 
+  .alert{
+    z-index: 1000;
+  }
+
   .board-row:after {
     clear: both;
     content: "";
