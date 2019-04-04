@@ -12,7 +12,9 @@
     "react-bootstrap": "^1.0.0-beta.6",
     "react-calendar": "^2.18.1",
     "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "react-highlight": "^0.12.0",
+    "react-scripts": "2.1.5",
+    "react-sidebar": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

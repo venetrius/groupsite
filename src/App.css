@@ -34,6 +34,9 @@ nav {
   cursor: pointer;
 }
 
+.content{
+  padding: 0px,0px,8px,8px;
+}
 footer {
   position: fixed;
   left: 0;
@@ -63,6 +66,8 @@ footer {
 .CCcontent {
   padding-top: 100px;
   padding-bottom: 520px;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .project-container{
@@ -80,4 +85,12 @@ footer {
   font:bold;
   font-size:130%;
   text-color:green;
+}
+.sidebar{
+  position: relative;
+  overflow: auto;
+}
+
+.CCfooter{
+  z-index: 10;
 }

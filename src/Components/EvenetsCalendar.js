@@ -10,11 +10,15 @@ class EvenetsCalendar extends Component {
  
   render() {
     return (
-      <div>
+      <div class="row row-content">
+      <div class="col-12 col-md-4"></div>
+    <div className="Login col-12 col-md-4">
         <Calendar
           onChange={this.onChange}
           value={this.state.date}
         />
+        </div>
+        <div class="col-12 col-md-4"></div>
       </div>
     );
   }

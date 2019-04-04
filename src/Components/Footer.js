@@ -5,7 +5,7 @@ import { faEnvelopeSquare, faLaptop} from '@fortawesome/free-solid-svg-icons';
 export default function Footer() {
 
   return (
-      <footer class="page-footer font-small  bg-light darken-1 pt-4">
+      <footer class="page-footer font-small  bg-light darken-1 pt-4 CCfooter">
         <div class="row justify-content-start">
           
           <div class="col-12 col-md-6">

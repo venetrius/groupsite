@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super (props);
     this.state = {
-      pages: ["Home", "Tutorial", "Events", "Contact Form", "Login"],
+      pages: ["Home", "Tutorial", "Events", "Contact Form", "Login", "one more item"],
       page: "Home"
     };
   }
@@ -20,13 +20,17 @@ class App extends Component {
 
   render() {
     return (
+
       <div>
+              <head>
+        <link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/railscasts.css" />
+      </head>
       <Header page = {this.state.page} onClick={(i) => this.handleClick(i)} pages = {this.state.pages} />
       <div class="CCcontent">
-        <Body page ={this.state.page}/>
+        <Body class="content" page ={this.state.page}/>
     {/*<Login></Login>*/}
       </div>
-      <Login></Login>
+    {/*<Login></Login>*/}
       <Footer></Footer>
       </div>
     );
