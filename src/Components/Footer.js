@@ -5,7 +5,7 @@ import { faEnvelopeSquare, faLaptop} from '@fortawesome/free-solid-svg-icons';
 export default function Footer() {
 
   return (
-      <footer class="page-footer font-small  bg-light darken-1 pt-4 CCfooter">
+      <footer class="page-footer font-small  bg-dark darken-1 pt-4 CCfooter">
         <div class="row justify-content-start">
           
           <div class="col-12 col-md-6">
@@ -17,7 +17,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <div class="footer-copyright text-center py-3 white">© 2019 Copyright:
             <a target="blank" href="#"> this website </a>
         </div>
       </footer>

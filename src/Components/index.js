@@ -6,5 +6,4 @@ import Login from './Login';
 import EvenetsCalendar from './EvenetsCalendar';
 import Tutorials from './Tutorial.js';
 
-
 export { Header, Footer, Body, Login, EvenetsCalendar, Tutorials }

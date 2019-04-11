@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Header, Footer, Body, Login} from './Components';
+import Tutorial from './Components/Tutorial';
 
 class App extends Component {
 
@@ -22,15 +23,14 @@ class App extends Component {
     return (
 
       <div>
-              <head>
+     <head>
         <link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/railscasts.css" />
       </head>
       <Header page = {this.state.page} onClick={(i) => this.handleClick(i)} pages = {this.state.pages} />
-      <div class="CCcontent">
-        <Body class="content" page ={this.state.page}/>
-    {/*<Login></Login>*/}
+      <div class="CCcontent" >
+      <Body  page={this.state.page}></Body>
       </div>
-    {/*<Login></Login>*/}
+      
       <Footer></Footer>
       </div>
     );

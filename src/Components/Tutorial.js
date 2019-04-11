@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Highlight from 'react-highlight';
 import SideMenu from './SideMenu';
+import StickySideBar from './StickiSideBar';
 
 class Tutorial extends React.Component {
 
@@ -18,15 +19,28 @@ class Tutorial extends React.Component {
           var dict = [
             ["Why to learn", "why"],
             ["What is React", "what"],
-            ["Suggested materials", "tutorial"]
+            ["Suggested materials", "tutorial"],
+            ["Javascript XML ", "JSX"],
+            ["React Components", "tutorial-component"]
           ];
         return(
+            <div>
+             {/*   <div>a</div>
+                <div>a</div>
+                
+                <SideMenu menuitem={dict}>This is the Sidebar</SideMenu>
             <div class="row row-content">
                 <div class="col-3 col-md-2 sidebar">
+                    
+                </div>
+        </div>*/}
+            <div class="row row-content">
+                <div class="col-3 col-md-2">
                     <SideMenu menuitem={dict}>This is the Sidebar</SideMenu>
                 </div>
-                <div class="col-9 col-md-10">
-                <h2> Hello if you are looking for a way to cach up to the group this might help you</h2>
+                <div class="col-9 col-md-10 wSidebar">
+                <h1>Tutorial</h1>
+                <h2> If you are looking for a way to cach up to the group this might help you</h2>
 
                 <p id="why">
                     <h3>Why do we learn React.js?</h3>
@@ -54,7 +68,7 @@ class Tutorial extends React.Component {
                 <h4>There are a few things you should definetly know (from prev. experience / tutorials) to 
                     be able to join or sessions. 
                 </h4>
-                <p>
+                <p id="JSX">
                     <h4>Javascript XML (JXM)</h4>
                     {example("It provides the ability to write JS code as XML document, it translated into HTML before sending it to  the browser"
 ,`function foo() {
@@ -67,11 +81,13 @@ class Tutorial extends React.Component {
     return (<div>bar</div>) 
 }`                 )}           
                 </p>
+                <p id="tutorial-component">
                 <h4>Components and function</h4>
                 <h5>In React you can create a lot of things</h5>
                 <a href="#why">goto why</a>
+                </p>
                 </div>
-          </div>
+          </div></div>
         )
     }
 }
@@ -83,7 +99,7 @@ function example(title, toHighlight){
                 {title}
             </div>
             <div class="col-12 col-md-6">
-            <Highlight language="javascriot">{toHighlight}</Highlight>
+            <Highlight language="javascript">{toHighlight}</Highlight>
             </div>
         </div>
         

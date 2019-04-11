@@ -18,12 +18,12 @@ class SideMenu extends React.Component {
   renderNavItem(item){
     var ref = "#"+item[1];
     console.log("#"+item[1]);
-    return(<div><a id={ref} href={ref}> {item[0]}</a></div>);
+    return(<div><a id={ref} href={ref} class="white"> {item[0]}</a></div>);
   }
 
   render() {
     var prop =  this.state.menuitems;
-    let navItems = [];
+    let navItems = [<div></div>];
     for(var i=0; i < prop.length; i++) {
       navItems.push(this.renderNavItem(prop[i]));
       // do something with "key" and "value" variables
@@ -38,14 +38,17 @@ class SideMenu extends React.Component {
         </button>
        * 
        */
-      <Sidebar
+      /*<Sidebar
         docked="true" 
         sidebar={navItems}
         open={this.state.sidebarOpen}
         onSetOpen={this.onSetSidebarOpen}
         styles={{ sidebar: { background: "white" } }}
       >
-      </Sidebar>
+      </Sidebar>*/
+      <div className="fixed-top">
+        {navItems}
+      </div>
     );
   }
 }

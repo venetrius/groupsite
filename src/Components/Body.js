@@ -10,7 +10,7 @@ class Body extends React.Component {
     render(){
       if(this.props.page === "Login"){
         return(<Login></Login>)
-      }else if(this.props.page == "Home"){
+      }else if(this.props.page == "ome"){
         return(<Home>Ajjajj</Home>)
       }else if(this.props.page === "Events"){
        return( <EvenetsCalendar>Hi there</EvenetsCalendar>)
