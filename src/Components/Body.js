@@ -3,7 +3,6 @@ import Login from './Login';
 import EvenetsCalendar from './EvenetsCalendar';
 import Tutorial from './Tutorial';
 import Home from './Home';
-import ContentWSideB from './ContentWSideB';
 
 class Body extends React.Component {
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Highlight from 'react-highlight';
 import SideMenu from './SideMenu';
-import StickySideBar from './StickiSideBar';
 
 class Tutorial extends React.Component {
 

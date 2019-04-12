@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
-import Cal2 from './Cal2';
+
 class EvenetsCalendar extends Component {
   state = {
     date: new Date(),
@@ -19,7 +19,6 @@ class EvenetsCalendar extends Component {
           />
         </div>
         <div class="col-12 col-md-4"></div>
-        <Cal2></Cal2>
       </div>
     );
   }

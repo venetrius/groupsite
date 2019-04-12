@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "react-sidebar";
 import './SideMenu.css';
  
 class SideMenu extends React.Component {

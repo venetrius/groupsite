@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "react-sidebar";
  
 const mql = window.matchMedia(`(min-width: 800px)`);
  
