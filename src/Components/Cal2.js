@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar'
-import globalize from 'globalize'
+//import globalize from 'globalize'
 
-const localizer = BigCalendar.globalizeLocalizer(globalize)
+const localizer = null; //BigCalendar.globalizeLocalizer(globalize)
 
 export default function Cal2(){
 const MyCalendar = props => (

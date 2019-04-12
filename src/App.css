@@ -30,6 +30,10 @@ nav {
     opacity: 0.5;
 }
 
+.show{
+  background-color:darkgray;
+}
+
 .nav-link:hover{
   cursor: pointer;
 }
@@ -38,11 +42,14 @@ nav {
   padding: 0px,0px,8px,8px;
 }
 footer {
-  position: fixed;
+  /*position: fixed;*/
+  position: relative;
+  overflow: hidden;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
+  z-index: 3;
 }
 
 .App-link {
@@ -64,12 +71,12 @@ footer {
   height: 10vh;
 }
 
-
 .CCcontent {
   padding-top: 11vh !important; /* 100px;*/
-  padding-bottom: 200px;
   padding-left: 3%;
   padding-right: 3%;
+  min-height: 89vh;
+  background-color: #eee;
 }
 
 .wSidebar{
@@ -101,6 +108,11 @@ footer {
   overflow: auto;
 }
 
+.sidebutton{
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
 .sticky{
   color:red;
   position: sticky;
@@ -124,10 +136,10 @@ footer {
 .fixed-top{
   background-color:cornflowerblue;
   width: 12vw;
-  height: 72vh;
+  height: 90vh;
   top: 10vh !important;
   overflow: auto;
-  z-index: 10;
+  z-index: 2;
 }
 
 .CCfooter{
@@ -140,4 +152,8 @@ footer {
 
 .invisible{
   display: none
+}
+
+h1, h2{
+  text-align: center;
 }

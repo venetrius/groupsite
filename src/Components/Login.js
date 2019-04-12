@@ -32,6 +32,7 @@ export default class Login extends Component {
         <div class="row row-content">
         <div class="col-12 col-md-4"></div>
       <div className="Login col-12 col-md-4">
+        <h2>Subscribe</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="email" bsSize="large">
             <Form.Control

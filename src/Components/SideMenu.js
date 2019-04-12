@@ -1,12 +1,14 @@
 import React from "react";
 import Sidebar from "react-sidebar";
+import './SideMenu.css';
  
 class SideMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       sidebarOpen: true,
-      menuitems: props.menuitem
+      menuitems: props.menuitem,
+      hidden: false
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
@@ -17,8 +19,11 @@ class SideMenu extends React.Component {
  
   renderNavItem(item){
     var ref = "#"+item[1];
-    console.log("#"+item[1]);
-    return(<div><a id={ref} href={ref} class="white"> {item[0]}</a></div>);
+    return(<div><a id={ref} href={ref} class="white sidebutton"> {item[0]}</a></div>);
+  }
+
+  hide(){
+    this.setState( {hidden: !this.state.hidden});
   }
 
   render() {
@@ -29,26 +34,19 @@ class SideMenu extends React.Component {
       // do something with "key" and "value" variables
      
     }
+    if(this.state.hidden){
+      return(
+        <div  class="CCsideButton">
+          <button type="button" class="btn btn-info" onClick={() =>{this.hide()}}>Show menu</button>
+        </div>
+      );
+    }
     return (
-      // TODO pass device size to docked so at small size side menu can be disposed
-      /** adding button if docked=false (which is the default val)
-       *         <button  
-        onClick={() => this.onSetSidebarOpen(true)}>
-          Open sidebar
-        </button>
-       * 
-       */
-      /*<Sidebar
-        docked="true" 
-        sidebar={navItems}
-        open={this.state.sidebarOpen}
-        onSetOpen={this.onSetSidebarOpen}
-        styles={{ sidebar: { background: "white" } }}
-      >
-      </Sidebar>*/
-      <div className="fixed-top">
+      <div class="col-3 col-md-2">
+      <div className="CCsidemenu fixed-top " >
+        <button type="button" class="btn btn-info" onClick={() =>{this.hide()}}>Hide menu</button>
         {navItems}
-      </div>
+      </div></div>
     );
   }
 }

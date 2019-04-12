@@ -1,0 +1,12 @@
+.CCsidemenu{
+    min-width: 120px;
+}
+
+.seeThroug{
+    opacity: 0.1;
+}
+
+.CCsideButton{
+    position: absolute;
+    z-index: 2;
+}
