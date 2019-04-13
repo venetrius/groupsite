@@ -21,11 +21,11 @@ class Home extends React.Component {
         </cite>
         Simon
         <br/><br/>
-        That's how thing started. End it was not a long time ago, and not to much happend since.
-        The goal is the group to learn together. We started with React, and will go with whatever we find important. 
+        That's how things started. And it was not a long time ago, and not too much happened since.
+        The goal is the group to learn together. We started with React and will go with whatever we find important. 
         <br/>
-        &nbsp;&nbsp;If you think you would spend a day every month working on project with an awesome group, to learn new technologies and create some cool stuff, than join us!
-        The most reasonable thing to do is to join to the <a href="https://www.meetup.com/Software-Developers-Learning-Together/events/">Meetup group</a>.&nbsp;
+        &nbsp;&nbsp;If you think you would spend a day every month working on a project with an awesome group, to learn new technologies and create some cool stuff, then join us!
+        The most reasonable thing to do is to join the <a href="https://www.meetup.com/Software-Developers-Learning-Together/events/">Meetup group</a>.&nbsp;
         For the sake of this website, you can also <a onClick={() => this.props.onClick("Join us")} href="#"> subscribe</a> to our mail list.
      </div>);
  }
