@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super (props);
     this.state = {
-      pages: ["Home", "Tutorial", "Events", "Contact Form", "Login", "one more item"],
+      pages: ["Home", "Tutorial", "Events", "Join us", "Contact"],
       page: "Home"
     };
   }
@@ -28,7 +28,7 @@ class App extends Component {
       </head>
       <Header page = {this.state.page} onClick={(i) => this.handleClick(i)} pages = {this.state.pages} />
       <div class="CCcontent" >
-      <Body  page={this.state.page}></Body>
+      <Body  page={this.state.page} onClick={(i) => this.handleClick(i)} />
       </div>
       
       <Footer></Footer>
