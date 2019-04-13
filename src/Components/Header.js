@@ -1,9 +1,6 @@
 import React from 'react'
 import logo from '../logo.png';
 
-
-const PagesEnum = Object.freeze({"HOME":"Home", "PROJECTS":"Projects", "CONTACT":"Contact",});
-
 class  Header extends React.Component{
     renderNavItem(name){
       if (this.props.page === name){
@@ -20,32 +17,17 @@ class  Header extends React.Component{
         );
       }
     }
-  
-    getNavitems(){
-      var cars = ["Saab", "Volvo", "BMW"];
-      let navItems = [];
-      
-      cars.forEach(function (arrayItem) {
-        navItems.push(this.renderNavItem(arrayItem));
-    });
-      return navItems;
-  }
-
 
     render(){
-      var cars = this.props.pages;
-      let navItems = [];
-      for (var i = 0; i < cars.length; i++) { 
-        navItems.push(this.renderNavItem(cars[i]));
-      }
-      cars.forEach(function (arrayItem) {
-        //this.renderNavItem("alma");
-       
-    });
+    var pages = this.props.pages;
+    let navItems = [];
+    for (var i = 0; i < pages.length; i++) { 
+      navItems.push(this.renderNavItem(pages[i]));
+    }
     return (
  
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-fixed CCnavigate">
-        <a class="navbar-brand" onClick={() =>{this.props.onClick(PagesEnum.HOME)}}> <img src={logo} alt="logo"></img>  </a>
+        <a class="navbar-brand" onClick={() =>{this.props.onClick(pages[0])}}> <img src={logo} alt="logo"></img>  </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
