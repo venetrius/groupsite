@@ -3,8 +3,6 @@ import Highlight from 'react-highlight';
 import SideMenu from './SideMenu';
 import SectionHeader from './Common/SectionHeader/SectionHeader';
 
-import Button from 'react-bootstrap/Button'
-
 class Tutorial extends Component {
 
   constructor(props) {
