@@ -3,8 +3,6 @@ import Highlight from 'react-highlight';
 import SideMenu from './SideMenu';
 import SectionHeader from './Common/SectionHeader/SectionHeader';
 
-import Button from 'react-bootstrap/Button'
-
 class Tutorial extends Component {
 
   constructor(props) {
@@ -45,10 +43,10 @@ class Tutorial extends Component {
             </p>
             <p id="tutorial">List of tutorials
                     <ul>
-                <li><a target="_blank" href="https://reactjs.org/tutorial/tutorial.html">
+                <li><a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/tutorial/tutorial.html">
                   'Official' React tutorial hands-on (Picking up terminology on the way)
                             </a></li>
-                <li><a target="_blank" href="https://www.robinwieruch.de/javascript-fundamentals-react-requirements/#react-arrow-functions">A tutorial with more fundamentals, but without exercises</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://www.robinwieruch.de/javascript-fundamentals-react-requirements/#react-arrow-functions">A tutorial with more fundamentals, but without exercises</a></li>
               </ul>
             </p>
 
