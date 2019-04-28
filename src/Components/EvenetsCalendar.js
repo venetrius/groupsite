@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
-import Calendar from 'react-calendar';
+import React, { useState } from "react";
+import { eventsArray } from "./eventsArray";
+import { Event } from "./Event";
 
-class EvenetsCalendar extends Component {
-  state = {
-    date: new Date(),
-  }
- 
-  onChange = date => this.setState({ date })
- 
-  render() {
-    return (
-      <div class="row row-content">
-        <div class="col-12 col-md-4"></div>
-        <div className="Login col-12 col-md-4">
-          <Calendar
-            onChange={this.onChange}
-            value={this.state.date}
-          />
-        </div>
-        <div class="col-12 col-md-4"></div>
-      </div>
-    );
-  }
-}
+const EvenetsCalendar = () => {
+  const eventComps = eventsArray.map(
+    ({ date, title, location, summary, prereqs, photos, links }) => (
+      <Event
+        key={title}
+        date={date}
+        title={title}
+        location={location}
+        summary={summary}
+        prereqs={prereqs}
+        photos={photos}
+        links={links}
+      />
+    )
+  );
 
-export default EvenetsCalendar
+  return eventComps;
+};
+
+export default EvenetsCalendar;
