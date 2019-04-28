@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Highlight from 'react-highlight';
-import SideMenu from './SideMenu';
-import SectionHeader from './Common/SectionHeader/SectionHeader';
+
+import SideMenu from '../Common/SideMenu/SideMenu';
+import SectionHeader from '../Common/SectionHeader/SectionHeader';
 
 class Tutorial extends Component {
 
