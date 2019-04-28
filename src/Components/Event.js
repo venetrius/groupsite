@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 
+import {
+  Details,
+  HeaderSpan,
+  InfoLi,
+  InfoSpan,
+  InfoUl,
+  SubHeaderSpan,
+  Summary
+} from "./StyledEvent";
+
 export const Event = ({
   title,
   date,
@@ -11,28 +21,47 @@ export const Event = ({
 }) => {
   const { isPreview, changeIsPreview } = useState(false);
 
-  const linkComps = links.map(({ href, linkText }) => (
-    <a key={linkText} href={href}>
-      {linkText}
-    </a>
-  ));
+  const linkComps = links
+    ? links.map(({ href, linkText }) => (
+        <li>
+          <a key={linkText} href={href}>
+            {linkText}
+          </a>
+        </li>
+      ))
+    : [];
 
-  const imageComps = photos.map(({ alt, src }) => (
-    <img width={50} key={alt} src={src} alt={alt} />
-  ));
+  const imageComps = photos
+    ? photos.map(({ alt, src }) => (
+        <img width={300} key={alt} src={src} alt={alt} />
+      ))
+    : [];
 
   return (
-    <details>
-      <summary>
-        {title} {date}
-      </summary>
-      <h1>{title}</h1>
-      <p>{date}</p>
-      <p>{location}</p>
-      <p>{summary}</p>
-      <p>{prereqs}</p>
-      {linkComps}
-      {imageComps}
-    </details>
+    <Details>
+      <Summary>
+        <HeaderSpan>{title}</HeaderSpan> on{" "}
+        <SubHeaderSpan>{date}</SubHeaderSpan>
+      </Summary>
+      <InfoUl>
+        <InfoLi>
+          <InfoSpan>Location: </InfoSpan>
+          {location}
+        </InfoLi>
+        <InfoLi>
+          <InfoSpan>Summary: </InfoSpan>
+          {summary}
+        </InfoLi>
+        <InfoLi>
+          <InfoSpan>Pre-requisites: </InfoSpan>
+          {prereqs}
+        </InfoLi>
+        <InfoLi>
+          <InfoSpan>Helpful links: </InfoSpan>
+          <ul>{linkComps}</ul>
+        </InfoLi>
+        <InfoLi>{imageComps}</InfoLi>
+      </InfoUl>
+    </Details>
   );
 };

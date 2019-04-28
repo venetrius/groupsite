@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { eventsArray } from "./eventsArray";
 import { Event } from "./Event";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  width: max-content;
+  margin: 0 auto;
+`;
 
 const EvenetsCalendar = () => {
   const eventComps = eventsArray.map(
@@ -18,7 +24,7 @@ const EvenetsCalendar = () => {
     )
   );
 
-  return eventComps;
+  return <Wrapper>{eventComps}</Wrapper>;
 };
 
 export default EvenetsCalendar;

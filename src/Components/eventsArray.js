@@ -2,8 +2,8 @@ import photo from "../hilderman-bg.jpg";
 
 export const eventsArray = [
   {
-    date: "date",
-    title: "title",
+    date: "April 29th, 2019",
+    title: "Learn React",
     location: "location",
     summary: "summary",
     prereqs: "prereqs",
