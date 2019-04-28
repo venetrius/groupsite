@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import './QuestionModal.css';
 
 
 
@@ -52,14 +53,13 @@ class QuestionModal extends Component {
                   <Form.Label>Question</Form.Label>
                   <Form.Control as="textarea" rows="3" />
                 </Form.Group>
-                <Button type="submit">Ask</Button>
-              </Form>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={this.handleClose}>
+                <Button className="modal-button" variant="secondary" onClick={this.handleClose}>
                 Close
               </Button>
-            </Modal.Footer>
+                <Button className="modal-button" type="submit">Ask</Button>
+              </Form>
+            </Modal.Body>
+            
           </Modal>
         </>
       );
