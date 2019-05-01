@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import Highlight from 'react-highlight';
+import { Component } from 'react';
+import { Switch, Route } from 'react-router-dom'
 
-import SideMenu from '../Common/SideMenu/SideMenu';
-import SectionHeader from '../Common/SectionHeader/SectionHeader';
+import TutorialHome from "./TutorialHome";
 
-class Tutorial extends Component {
+class TutorialPage extends Component {
 
   constructor(props) {
     super(props);
@@ -148,6 +147,6 @@ function example(description, toHighlight) {
       </div>
     </div>
 
-  )
+ )
 }
-export default Tutorial
+export default TutorialPage

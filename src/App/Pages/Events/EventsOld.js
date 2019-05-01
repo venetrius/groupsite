@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 
-class EvenetsCalendar extends Component {
+class Events extends Component {
   state = {
     date: new Date(),
   }
@@ -24,4 +24,4 @@ class EvenetsCalendar extends Component {
   }
 }
 
-export default EvenetsCalendar
+export default Events
