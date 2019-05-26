@@ -10,9 +10,9 @@ class Body extends React.Component {
       if(this.props.page === "Join us"){
         return(<Login />)
       }else if(this.props.page === "Home"){
-        return(<Home onClick={(i) => this.props.onClick(i)}>Ajjajj</Home>)
+        return(<Home onClick={(i) => this.props.onClick(i)}></Home>)
       }else if(this.props.page === "Events"){
-       return( <EvenetsCalendar>Hi there</EvenetsCalendar>)
+        return( <EvenetsCalendar></EvenetsCalendar>)
       }else if(this.props.page === "Tutorial"){
         return(<Tutorial />)
       }else if(this.props.page === "Contact"){
