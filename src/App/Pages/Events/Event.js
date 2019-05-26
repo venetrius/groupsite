@@ -8,7 +8,7 @@ import {
   InfoUl,
   SubHeaderSpan,
   Summary
-} from "./StyledEvent";
+} from "../../../Components/StyledEvent";
 
 export const Event = ({
   title,

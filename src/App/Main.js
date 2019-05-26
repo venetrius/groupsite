@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
-import Events from "./Pages/Events/Events";
+import Events from "./Pages/Events/EventPage";
 import Tutorial from "./Pages/Tutorial/Tutorial"
 
 class Main extends Component {
