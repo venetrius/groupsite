@@ -8,18 +8,13 @@ import logo from '../../logo.png';
 
 class Header extends Component {
   render() {
-    var brand = <LinkContainer to="/" className="navbar-brand" />;
 
     return (
-      <Navbar
-        brand={brand}
-        collapseOnSelect
-        expand="lg"
-        bg="dark"
-        variant="dark"
-      >
-        <Navbar.Brand href="/home">
-          <img src={logo} alt="logo" />
+      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" >
+        <Navbar.Brand>
+          <LinkContainer to="/">
+              <img src={logo} alt="logo" />
+          </LinkContainer>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

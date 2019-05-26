@@ -3,17 +3,11 @@ import { Event } from "./Event"
 import { eventsArray } from "./eventsArray"
 
 export default class Events extends Component {
-  // handleExpand() {
-  //   this.setState({
-  //     isPreview : False
-  //   })
-  // }
+  
   render() {
     var storage_array = eventsArray
-    var events_jsx = []
-    var prev_events = []
-    var future_events = []
-    var today = new Date()
+    var events_jsx = [];
+    
     for (var idx in storage_array) {
       events_jsx.push(<Event
         title={storage_array[idx].title}

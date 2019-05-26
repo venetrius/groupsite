@@ -44,12 +44,6 @@ class HomePage extends React.Component {
         <a href="https://www.meetup.com/Software-Developers-Learning-Together/events/">
           Meetup group
         </a>
-        .&nbsp; For the sake of this website, you can also{' '}
-        <a onClick={() => this.props.onClick('Join us')} href="#">
-          {' '}
-          subscribe
-        </a>{' '}
-        to our mail list.
       </div>
     );
   }
