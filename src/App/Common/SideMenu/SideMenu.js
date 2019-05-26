@@ -1,67 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './SideMenu.css';
 
-class SideMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sidebarOpen: true,
-      menuitems: props.menuitem,
-      hidden: false,
-    };
-    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+export function SideMenu({ menuItems }) {
+  const [hidden, setHidden] = useState(false);
+
+  function toggleHide() {
+    setHidden(!hidden);
   }
 
-  onSetSidebarOpen(open) {
-    this.setState({ sidebarOpen: open });
-  }
+  const navItems = menuItems.map(item => {
+    const ref = '#' + item[1];
 
-  renderNavItem(item) {
-    var ref = '#' + item[1];
     return (
       <Button key={ref} className="side-menu-item" variant="link" href={ref}>
         {item[0]}
       </Button>
     );
-  }
+  });
 
-  hide() {
-    this.setState({ hidden: !this.state.hidden });
-  }
-
-  render() {
-    var prop = this.state.menuitems;
-
-    let navItems = [];
-    for (var i = 0; i < prop.length; i++) {
-      navItems.push(this.renderNavItem(prop[i]));
-      // do something with "key" and "value" variables
-    }
-    if (this.state.hidden) {
-      return (
-        <div className="CCsideButton">
-          <button
-            type="button"
-            className="btn btn-info"
-            onClick={() => {
-              this.hide();
-            }}
-          >
-            Show menu
-          </button>
-        </div>
-      );
-    }
+  if (hidden) {
+    return (
+      <div className="CCsideButton">
+        <button type="button" className="btn btn-info" onClick={toggleHide}>
+          Show menu
+        </button>
+      </div>
+    );
+  } else {
     return (
       <div className="col-3 col-md-2">
         <div className="CCsidemenu fixed-top ">
           <button
             type="button"
             className="btn btn-info side-menu-item"
-            onClick={() => {
-              this.hide();
-            }}
+            onClick={toggleHide}
           >
             Hide menu
           </button>
@@ -71,4 +44,5 @@ class SideMenu extends React.Component {
     );
   }
 }
+
 export default SideMenu;
