@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from './Pages/Login';
-import EvenetsCalendar from './Pages/EvenetsCalendar';
+import Events from './Events';
 import Tutorial from './Pages/Tutorial';
 import Home from './Pages/Home';
 
@@ -12,7 +12,7 @@ class Body extends React.Component {
       }else if(this.props.page === "Home"){
         return(<Home onClick={(i) => this.props.onClick(i)}>Ajjajj</Home>)
       }else if(this.props.page === "Events"){
-       return( <EvenetsCalendar>Hi there</EvenetsCalendar>)
+       return( <Events />)
       }else if(this.props.page === "Tutorial"){
         return(<Tutorial />)
       }else if(this.props.page === "Contact"){
