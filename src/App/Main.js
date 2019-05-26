@@ -9,7 +9,7 @@ import Poll from './Pages/Poll/Poll'
 
 function Main() {
   return (
-    <main>
+    <main style={{ minHeight: '70vh' }}>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/tutorial" component={Tutorial} />
