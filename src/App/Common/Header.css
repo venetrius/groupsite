@@ -4,6 +4,8 @@
     cursor: pointer;
 }
 
-.nav-item.active {
-    color: orangered;
+.navbar-brand>img {
+    border-radius: 40%;
+    opacity: .5;
+    cursor: pointer;
 }
