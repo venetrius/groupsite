@@ -26,6 +26,9 @@ function Header() {
           <LinkContainer to="/events">
             <NavItem>Events</NavItem>
           </LinkContainer>
+          <LinkContainer to="/poll">
+            <NavItem>Polls</NavItem>
+          </LinkContainer>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

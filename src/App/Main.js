@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Events from './Pages/Events/EventPage';
 import Tutorial from './Pages/Tutorial/Tutorial';
+import Poll from './Pages/Poll/Poll'
 
 function Main() {
   return (
@@ -14,6 +15,7 @@ function Main() {
         <Route path="/tutorial" component={Tutorial} />
         <Route path="/events" component={Events} />
         <Route path="/login" component={Login} />
+        <Route path="/poll" component={Poll} />
       </Switch>
     </main>
   );
