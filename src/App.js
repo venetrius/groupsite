@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super (props);
     this.state = {
-      pages: ["Home", "Tutorial", "Events", "Join us", "Contact"],
+      pages: ["Home", "Tutorial", "Events", "Projects", "Join us", "Contact"],
       page: "Home"
     };
   }
