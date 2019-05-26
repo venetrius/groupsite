@@ -1,7 +1,5 @@
 import React from "react";
  
-const mql = window.matchMedia(`(min-width: 800px)`);
- 
 class Home extends React.Component {
  render(){
      return(
