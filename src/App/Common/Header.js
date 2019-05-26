@@ -4,12 +4,23 @@ import React, { Component } from 'react';
 
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import logo from '../../logo.png';
 
 class Header extends Component {
   render() {
+    var brand = <LinkContainer to="/" className="navbar-brand" />;
+
     return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Brand Bar</Navbar.Brand>
+      <Navbar
+        brand={brand}
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+      >
+        <Navbar.Brand href="/">
+          <img src={logo} alt="logo" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
