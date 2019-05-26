@@ -1,0 +1,11 @@
+.nav-item {
+    padding: 0 8px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.navbar-brand>img {
+    border-radius: 40%;
+    opacity: .5;
+    cursor: pointer;
+}
