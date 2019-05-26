@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import TutorialMain from "./TutorialMain";
+import TutorialPage from './TutorialPage';
 
 class Tutorial extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/tutorial" component={TutorialMain} />
+        <Route exact path="/tutorial" component={TutorialPage} />
       </Switch>
     );
   }
