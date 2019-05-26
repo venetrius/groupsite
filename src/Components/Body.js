@@ -3,6 +3,7 @@ import Login from './Pages/Login';
 import Events from './Events';
 import Tutorial from './Pages/Tutorial';
 import Home from './Pages/Home';
+import Projects from './Pages/Projects';
 
 class Body extends React.Component {
 
@@ -13,6 +14,8 @@ class Body extends React.Component {
         return(<Home onClick={(i) => this.props.onClick(i)}></Home>)
       }else if(this.props.page === "Events"){
        return( <Events />)
+      }else if(this.props.page === "Projects"){
+        return(<Projects />)
       }else if(this.props.page === "Tutorial"){
         return(<Tutorial />)
       }else if(this.props.page === "Contact"){
