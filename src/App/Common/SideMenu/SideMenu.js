@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import './SideMenu.css';
+import { Nav } from './StyledSideMenu';
 
 export function SideMenu({ menuItems }) {
   const [hidden, setHidden] = useState(false);
@@ -13,36 +13,33 @@ export function SideMenu({ menuItems }) {
     const ref = '#' + item[1];
 
     return (
-      <Button key={ref} className="side-menu-item" variant="link" href={ref}>
+      <Button key={ref} variant="link" href={ref}>
         {item[0]}
       </Button>
     );
   });
 
-  if (hidden) {
-    return (
-      <div className="CCsideButton">
-        <button type="button" className="btn btn-info" onClick={toggleHide}>
-          Show menu
-        </button>
-      </div>
-    );
-  } else {
-    return (
-      <div className="col-3 col-md-2">
-        <div className="CCsidemenu fixed-top">
-          <button
-            type="button"
-            className="btn btn-info side-menu-item"
-            onClick={toggleHide}
-          >
-            Hide menu
-          </button>
+  return (
+    <>
+      {hidden && (
+        <Button
+          style={{ height: 'max-content' }}
+          type="button"
+          onClick={toggleHide}
+        >
+          {hidden ? 'Show menu' : 'Hide menu'}
+        </Button>
+      )}
+      {!hidden && (
+        <Nav>
+          <Button type="button" onClick={toggleHide}>
+            {hidden ? 'Show menu' : 'Hide menu'}
+          </Button>
           {navItems}
-        </div>
-      </div>
-    );
-  }
+        </Nav>
+      )}
+    </>
+  );
 }
 
 export default SideMenu;
