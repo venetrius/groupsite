@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import Nav from "react-bootstrap/Nav";
-// import Navbar from "react-bootstrap/Navbar";
+
+import "./Header.css";
 
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -18,7 +18,7 @@ class Header extends Component {
         bg="dark"
         variant="dark"
       >
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="/home">
           <img src={logo} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
