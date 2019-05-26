@@ -1,19 +1,22 @@
 import React, { Component } from "react";
-// import Nav from "react-bootstrap/Nav";
-// import Navbar from "react-bootstrap/Navbar";
+
+import "./Header.css";
+import logo from '../../logo.png';
 
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 class Header extends Component {
   render() {
+    var brand = <LinkContainer to='/' className='navbar-brand' />;
+
     return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Brand Bar</Navbar.Brand>
+      <Navbar brand={brand} collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Brand href="/"><img src={logo} alt="logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-          <LinkContainer to="/home">
+            <LinkContainer to="/home">
               <NavItem>Home</NavItem>
             </LinkContainer>
             <LinkContainer to="/tutorial">

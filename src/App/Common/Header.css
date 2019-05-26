@@ -1,0 +1,9 @@
+.nav-item {
+    padding: 0 8px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    color: orangered;
+}
