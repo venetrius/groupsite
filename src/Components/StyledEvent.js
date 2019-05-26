@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Details = styled.details`
-  margin: 1rem;
+  max-width: 40%;
+  margin: 1rem auto;
   background: #ffffffaa;
   padding: 1rem;
   border-radius: 15px;
@@ -16,7 +17,7 @@ export const Summary = styled.summary`
   }
 
   &&:before {
-    content: "+";
+    content: '+';
     font-size: 1.9em;
     margin: -5px 10px 0 0;
   }
