@@ -30,7 +30,7 @@ export function SideMenu({ menuItems }) {
   } else {
     return (
       <div className="col-3 col-md-2">
-        <div className="CCsidemenu fixed-top ">
+        <div className="CCsidemenu fixed-top">
           <button
             type="button"
             className="btn btn-info side-menu-item"
