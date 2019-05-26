@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Highlight from 'react-highlight';
-import SideMenu from './SideMenu';
 
-class Tutorial extends React.Component {
+import SideMenu from '../Common/SideMenu/SideMenu';
+import SectionHeader from '../Common/SectionHeader/SectionHeader';
+
+class Tutorial extends Component {
 
   constructor(props) {
     super(props);
@@ -42,10 +44,10 @@ class Tutorial extends React.Component {
             </p>
             <p id="tutorial">List of tutorials
                     <ul>
-                <li><a target="_blank" href="https://reactjs.org/tutorial/tutorial.html">
+                <li><a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/tutorial/tutorial.html">
                   'Official' React tutorial hands-on (Picking up terminology on the way)
                             </a></li>
-                <li><a target="_blank" href="https://www.robinwieruch.de/javascript-fundamentals-react-requirements/#react-arrow-functions">A tutorial with more fundamentals, but without exercises</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://www.robinwieruch.de/javascript-fundamentals-react-requirements/#react-arrow-functions">A tutorial with more fundamentals, but without exercises</a></li>
               </ul>
             </p>
 
@@ -54,7 +56,7 @@ class Tutorial extends React.Component {
                 </h4>
             <br />
             <p id="JSX">
-              <h4>Javascript XML (JSX)</h4>
+            <SectionHeader title="Javascript XML (JSX)" buttonText="Questions?"/>
               {example(
                 <div>
                   &nbsp;&nbsp; It provides the ability to write JS code as an XML document, which will be translated into HTML before rendering it to the browser.
@@ -76,7 +78,7 @@ class Tutorial extends React.Component {
             </p>
 
             <br/>
-            <p id="tutorial-component"> <h4>React Components</h4>
+            <p id="tutorial-component"> <SectionHeader title="React Components" buttonText="Questions?"/>
               {example(
                 <div>A class which extends React.Component has a handful of useful features 
                   <ul>

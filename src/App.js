@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Header, Footer, Body, Login} from './Components';
-import Tutorial from './Components/Tutorial';
+import { Header, Footer, Body } from './Components';
 
 class App extends Component {
 
