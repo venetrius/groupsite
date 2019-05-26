@@ -25,9 +25,9 @@ class Tutorial extends Component {
           <SideMenu menuitem={dict} />
           <div class="col wSidebar">
             <h1>Tutorial</h1>
-            <br></br>
+            <br/>
             <h2> If you are looking for a way to catch up to the group this might help you</h2>
-            <br></br><br></br>
+            <br/><br/>
             <p id="why">
               <h3>Why do we learn React.js?</h3>
               <div>Most of us aren't a front end developer. But we felt a need
@@ -37,10 +37,8 @@ class Tutorial extends Component {
             <p>
               <h3 id="what" > What is React?</h3>
               React is a JavaScript UI library developed by Facebook.
-                    To learn more: <br />
+                    To learn more: <br/>
               <a href="https://www.w3schools.com/whatis/whatis_react.asp">https://www.w3schools.com/whatis/whatis_react.asp </a>
-
-
             </p>
             <p id="tutorial">List of tutorials
                     <ul>
@@ -53,8 +51,8 @@ class Tutorial extends Component {
 
             <h4>While we are happy to see you on any of our hackathons, there are a few things you should definitely know (from prev. experience / tutorials) to
                 get the best out of our sessions.
-                </h4>
-            <br />
+            </h4>
+            <br/>
             <p id="JSX">
             <SectionHeader title="Javascript XML (JSX)" buttonText="Questions?"/>
               {example(

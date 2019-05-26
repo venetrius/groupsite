@@ -10,3 +10,8 @@
     position: absolute;
     z-index: 2;
 }
+
+.side-menu-item{
+    margin-left: 5px;
+    color: white;
+}
