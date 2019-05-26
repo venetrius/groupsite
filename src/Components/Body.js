@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from './Pages/Login';
 import Events from './Events';
+import Poll from './Pages/Poll'
 import Tutorial from './Pages/Tutorial';
 import Home from './Pages/Home';
 
@@ -12,7 +13,9 @@ class Body extends React.Component {
       }else if(this.props.page === "Home"){
         return(<Home onClick={(i) => this.props.onClick(i)}></Home>)
       }else if(this.props.page === "Events"){
-       return( <Events />)
+        return( <Events />)
+      }else if (this.props.page === "Poll"){
+        return( <Poll /> )
       }else if(this.props.page === "Tutorial"){
         return(<Tutorial />)
       }else if(this.props.page === "Contact"){
