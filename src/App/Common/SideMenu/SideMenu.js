@@ -1,4 +1,5 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
 import './SideMenu.css';
  
 class SideMenu extends React.Component {
@@ -18,7 +19,9 @@ class SideMenu extends React.Component {
  
   renderNavItem(item){
     var ref = "#"+item[1];
-    return(<div><a id={ref} href={ref} class="white sidebutton"> {item[0]}</a></div>);
+    return(
+      <Button className="side-menu-item" variant="link" href={ref}> {item[0]}</Button>
+    );
   }
 
   hide(){
@@ -43,7 +46,7 @@ class SideMenu extends React.Component {
     return (
       <div class="col-3 col-md-2">
       <div className="CCsidemenu fixed-top " >
-        <button type="button" class="btn btn-info" onClick={() =>{this.hide()}}>Hide menu</button>
+        <button type="button" class="btn btn-info side-menu-item" onClick={() =>{this.hide()}}>Hide menu</button>
         {navItems}
       </div></div>
     );
