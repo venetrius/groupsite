@@ -1,4 +1,4 @@
-import photo from "../hilderman-bg.jpg";
+import photo from "../../../hilderman-bg.jpg";
 
 export const eventsArray = [
   {
