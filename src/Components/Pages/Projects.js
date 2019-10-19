@@ -1,47 +1,63 @@
 import React, { Component } from "react";
 import "./Projects.css";
 class Projects extends React.Component {
-
-  render(){
-    return (
-      <div>
-        <h1>Projects</h1>
-        <div className="project-container">
-          <h2>Example 2</h2>
-          <div className="container project-details">
-            <div className="row row-container">
-              <div className="col-6 image-container">
-                <img 
-                  src="https://images.adsttc.com/media/images/55e6/11cc/2347/5d6f/2600/0001/slideshow/pdc_red_building_w-green_building.jpg?1441141187"
-                  alt="redBuilding"
-                />
-                <br/>
-                Hello there
-              </div>
-              <div className="col-6 image-container">
-                <p>Goal</p>
-                <p>Funcionalities</p>
-                <p>Link</p>
-                <p>Github link</p>
-                <br/>
-                Hi
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
+    
+    constructor(props) {
+      super(props);
+      this.state = {
+        error: null,
+        isLoaded: false,
+        items: []
+      };
+    }
+  
+    componentDidMount() {
+      console.log("project page is loading")
+      /*fetch("http://localhost:3030/projects")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              isLoaded: true,
+              items: result.items
+            });
+          },
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+        )
+      */
+     this.setState({
+       isLoaded:true,
+       items : [{message : 'finish me'}]
+     })
+    }
+  
+    render() {
+      const { error, isLoaded, items } = this.state;
+      if (error) {
+        return <div>Error: {error.message}</div>;
+      } else if (!isLoaded) {
+        return <div>Loading...</div>;
+      } else {
+        return (
+          <ul>
+            {items.map(item => (
+              <li key={item.message}>
+                {item.message} {item.message}
+              </li>
+            ))}
+          </ul>
+        );
+      }
+    }
 
 }
 
-class ProjectHighlight extends React.Component{
-  render(){
-    return (
-      <div>
-        
-      </div>
-    );
-  }
-}
 export default Projects;
