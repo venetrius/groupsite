@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./Projects.css";
+import ProjectList from './ProjectList';
+import AddProject from './AddProject';
 class Projects extends React.Component {
     
     constructor(props) {
@@ -7,8 +9,35 @@ class Projects extends React.Component {
       this.state = {
         error: null,
         isLoaded: false,
-        items: []
+        list: []
       };
+    }
+
+    handleAddProject=(project)=>{
+
+      if(!project){
+        return "Enter valid project";
+      }
+
+      else if(this.state.list.indexOf(project)>-1){
+        return "This project already exists.";
+      }
+
+      this.setState((prevState)=>({
+        list:prevState.list.concat(project)
+      }));
+    }
+
+    handleDeleteProject=(projectToDelete)=>{
+      this.setState((prevState)=>({
+        list:prevState.list.filter((project)=>project!==projectToDelete)
+      }));
+    }
+
+    handleDeleteProjects=()=>{
+      this.setState({
+        list:[]
+      });
     }
   
     componentDidMount() {
@@ -34,10 +63,18 @@ class Projects extends React.Component {
         )
       */
      this.setState({
-       isLoaded:true,
-       items : [{message : 'finish me'}]
-     })
+      isLoaded:true,
+      items : [{message : 'finish me'}]
+    })
     }
+    componentWillUnmount(){
+      console.log("Goodbye!");
+    }
+
+
+    
+
+
   
     render() {
       const { error, isLoaded, items } = this.state;
@@ -47,14 +84,19 @@ class Projects extends React.Component {
         return <div>Loading...</div>;
       } else {
         return (
-          <ul>
-            {items.map(item => (
-              <li key={item.message}>
-                {item.message} {item.message}
-              </li>
-            ))}
-          </ul>
+          <div>
+
+            <ProjectList
+            list={this.state.list}
+            handleDeleteProject={this.handleDeleteProject}
+            handleDeleteProjects={this.handleDeleteProjects}>
+              </ProjectList>
+            
+          
+          <AddProject handleAddProject={this.handleAddProject}/>
+          </div>
         );
+        
       }
     }
 
