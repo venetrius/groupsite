@@ -11,9 +11,9 @@ export default class Events extends Component {
   render() {
     var storage_array = eventsArray
     var events_jsx = []
-    var prev_events = []
+    /*var prev_events = []
     var future_events = []
-    var today = new Date()
+    var today = new Date()*/
     for (var idx in storage_array) {
       events_jsx.push(<Event
         title={storage_array[idx].title}

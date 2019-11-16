@@ -21,9 +21,9 @@ class Tutorial extends Component {
     ];
     return (
       <div>
-        <div class="row row-content">
+        <div className="row row-content">
           <SideMenu menuitem={dict} />
-          <div class="col wSidebar">
+          <div className="col wSidebar">
             <h1>Tutorial</h1>
             <br/>
             <h2> If you are looking for a way to catch up to the group this might help you</h2>
@@ -137,11 +137,11 @@ class Tutorial extends Component {
 
 function example(description, toHighlight) {
   return (
-    <div class="row row-container">
-      <div class="col-12 col-md-6">
+    <div className="row row-container">
+      <div className="col-12 col-md-6">
         {description}
       </div>
-      <div class="col-12 col-md-6">
+      <div className="col-12 col-md-6">
         <Highlight language="javascript">{toHighlight}</Highlight>
       </div>
     </div>

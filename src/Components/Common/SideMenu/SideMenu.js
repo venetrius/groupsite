@@ -38,15 +38,15 @@ class SideMenu extends React.Component {
     }
     if(this.state.hidden){
       return(
-        <div  class="CCsideButton">
-          <button type="button" class="btn btn-info" onClick={() =>{this.hide()}}>Show menu</button>
+        <div  className="CCsideButton">
+          <button type="button" className="btn btn-info" onClick={() =>{this.hide()}}>Show menu</button>
         </div>
       );
     }
     return (
-      <div class="col-3 col-md-2">
+      <div className="col-3 col-md-2">
       <div className="CCsidemenu fixed-top " >
-        <button type="button" class="btn btn-info side-menu-item" onClick={() =>{this.hide()}}>Hide menu</button>
+        <button type="button" className="btn btn-info side-menu-item" onClick={() =>{this.hide()}}>Hide menu</button>
         {navItems}
       </div></div>
     );

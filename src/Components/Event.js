@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   Details,
@@ -19,7 +19,7 @@ export const Event = ({
   photos,
   links
 }) => {
-  const { isPreview, changeIsPreview } = useState(false);
+  //const { isPreview, changeIsPreview } = useState(false);
 
   const linkComps = links
     ? links.map(({ href, linkText }) => (

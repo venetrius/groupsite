@@ -28,8 +28,8 @@ export default class Login extends Component {
 
   render() {
     return (
-        <div class="row row-content">
-        <div class="col-12 col-md-4"></div>
+        <div className="row row-content">
+        <div className="col-12 col-md-4"></div>
       <div className="Login col-12 col-md-4">
         <h2>Subscribe</h2>
         <Form onSubmit={this.handleSubmit}>
@@ -58,7 +58,7 @@ export default class Login extends Component {
           </Button>
         </Form>
       </div>
-      <div class="col-12 col-md-4"></div>
+      <div className="col-12 col-md-4"></div>
       </div>
     );
   }

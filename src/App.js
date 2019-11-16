@@ -22,11 +22,8 @@ class App extends Component {
     return (
 
       <div>
-     <head>
-        <link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/railscasts.css" />
-      </head>
       <Header page = {this.state.page} onClick={(i) => this.handleClick(i)} pages = {this.state.pages} />
-      <div class="CCcontent" >
+      <div className="CCcontent" >
       <Body  page={this.state.page} onClick={(i) => this.handleClick(i)} />
       </div>
       

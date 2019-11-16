@@ -13,7 +13,7 @@ const ProjectList =(props)=>{
                 handleDeleteProject={props.handleDeleteProject}></Project>
             ))
         }
-        <button class='button' onClick={props.handleDeleteProjects}>Remove all Projects</button>
+        <button className='button' onClick={props.handleDeleteProjects}>Remove all Projects</button>
 
 
 
