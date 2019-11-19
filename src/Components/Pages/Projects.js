@@ -1,10 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Projects.css";
 import GeneralModal from './../Common/Modal/GeneralModal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 
 class Projects extends React.Component {
 
@@ -18,19 +22,38 @@ class Projects extends React.Component {
   }
 
   handleAddProject(event) {
-    console.log(event.target.elements.formProjectName.value)
-    console.log(event.target.elements.projectDescription.value)
+    const selectedStack = []
+    for(let option of event.target.elements.techStack.selectedOptions){
+      selectedStack.push(option.label)
+    }
+    axios.post('https://yyc-server.herokuapp.com/projects', {
+    //  axios.post('http://localhost:3030/projects', {
+      name: event.target.elements.formProjectName.value,
+      description: event.target.elements.projectDescription.value,
+      difficulty_from : event.target.elements.difficultyFrom.value,
+      difficulty_to : event.target.elements.difficultyTo.value,
+      selected_stack : selectedStack
+
+    })
+    .then(response => {
+      const data = response.data.results;
+      const newItemList = [].concat(this.state.items)
+      this.setState({items: newItemList})
+    })
+    .catch(error => {
+      console.log(error);
+    })
     event.preventDefault()
   }
 
   componentDidMount() {
-    fetch("http://localhost:3030/projects")
+    fetch("https://yyc-server.herokuapp.com/projects")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result
+            items: result.reverse()
           });
         },
         (error) => {
@@ -42,13 +65,69 @@ class Projects extends React.Component {
       )
   }
 
-  renderProject(project){
+  getRandomVariant(){
+    const variant = ['primary' , 'secondary' , 'success' , 'danger' , 'warning' , 'info' , 'light' , 'dark']
+    return variant[Math.floor(Math.random()*variant.length)]
+  }
+
+  renerTechStack(techStackAsString){
+    const badges = techStackAsString.split(',').map(tech =>   
+      <Badge pill variant={this.getRandomVariant()} style={{marginRight: "20px"}}> 
+        {tech}
+      </Badge>
+    )
     return (
-      <div key={project.id}>
-        <h4>{project.name}</h4>
-        <div>{project.stack.split(',').join(' ')}</div>
-        <p>{project.description}</p>
-      </div>
+    <div>
+      {badges}
+    </div>
+    )
+  }
+
+  setKey(key){
+    this.setState({key})
+  }
+
+  renderProject(project){
+    const stack = project.selected_stack || ''
+    return (
+      <div>
+      <Card  key = {`projectCard_${project.id}`} >
+      <Card.Header><b>{project.name}</b></Card.Header>
+      <Card.Body>
+      <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={k => this.setKey(k)}>
+      <Tab eventKey="home" title="Home">
+        'Home home home'
+      </Tab>
+      <Tab eventKey="profile" title="Profile">
+        'The profile is important'
+      </Tab>
+      <Tab eventKey="contact" title="Contact">
+        Well this is disabled
+        <b>Description:</b>
+        <Card.Text>
+          {project.description}
+        </Card.Text>
+        <Card.Text>
+          difficulty: {project.difficulty_from} - {project.difficulty_to}
+        </Card.Text>
+        {this.renerTechStack(stack)}
+        <br/>
+      </Tab>
+      </Tabs>
+      <Button variant="primary">Join the team</Button>
+      </Card.Body>
+    </Card>
+    <br/>
+    </div>)
+  }
+
+  getFormSelector(choices, selectorId, isMultiple){
+    const options = choices.map(choice => <option key={selectorId+choice}>{choice}</option>) 
+    console.log('len', options.length)
+    return (
+      <Form.Control  as="select" multiple={isMultiple}>
+        {options}
+      </Form.Control>
     )
   }
 
@@ -83,7 +162,7 @@ class Projects extends React.Component {
             <Form.Group controlId="difficultyTo">
               <Form.Label>Difficulty to</Form.Label>
               {this.getFormSelector(difficultyLevels, 'diffTo')}
-        </Form.Group>
+            </Form.Group>
           </Col>
         </Form.Row>
         <br/>
@@ -105,8 +184,16 @@ class Projects extends React.Component {
       const list = items.map(project => this.renderProject(project))
       return (
         <div>
+          <GeneralModal key='top'
+            title="Add a new project"
+            buttonText ="Add project"
+            modalBody={this.getProjectForm()}
+          ></GeneralModal>
+          <br/>
+          <br/>
           {list}
-          <GeneralModal
+          <br/>
+          <GeneralModal key='bottom'
             title="Add a new project"
             buttonText ="Add project"
             modalBody={this.getProjectForm()}
