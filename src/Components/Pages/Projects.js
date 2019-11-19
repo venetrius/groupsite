@@ -3,6 +3,8 @@ import "./Projects.css";
 import GeneralModal from './../Common/Modal/GeneralModal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 
 class Projects extends React.Component {
 
@@ -51,6 +53,8 @@ class Projects extends React.Component {
   }
 
   getProjectForm(){
+    const difficultyLevels = ['Novice', 'Confident' ,'Seasoned', 'Hopeless']
+    const techStacks = ['JavaScript', 'Node.js', 'React.js', 'Python','Java', '.Net', 'REST', 'GrapQL', 'PSQL', 'MySQL', 'MongoDB']
     return(
       <Form  onSubmit={(e) => this.handleAddProject(e)}>
         <Form.Group controlId="formProjectName">
@@ -62,8 +66,27 @@ class Projects extends React.Component {
         </Form.Group>
         <Form.Group controlId="projectDescription">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows="5" />
+            <Form.Control as="textarea" rows="3" />
         </Form.Group>
+        <Form.Group controlId="techStack">
+            <Form.Label>Tech stack</Form.Label>
+            {this.getFormSelector(techStacks, 'stack', true)}
+        </Form.Group>
+        <Form.Row>
+          <Col>
+            <Form.Group controlId="difficultyFrom">
+              <Form.Label>Difficulty from</Form.Label>
+              {this.getFormSelector(difficultyLevels, 'diffFrom')}
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group controlId="difficultyTo">
+              <Form.Label>Difficulty to</Form.Label>
+              {this.getFormSelector(difficultyLevels, 'diffTo')}
+        </Form.Group>
+          </Col>
+        </Form.Row>
+        <br/>
         <Button className="modal-button" variant="secondary">
           Close
         </Button>
