@@ -17,7 +17,8 @@ class Projects extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      list: []
+      list: [],
+      keys : {}
     };
   }
 
@@ -88,21 +89,17 @@ class Projects extends React.Component {
   }
 
   renderProject(project){
+    const cardHeaderStyle = {marginBottom : '0rem'}
+
     const stack = project.selected_stack || ''
     return (
       <div>
       <Card  key = {`projectCard_${project.id}`} >
       <Card.Header><b>{project.name}</b></Card.Header>
       <Card.Body>
-      <Tabs id="controlled-tab-example" activeKey={this.state.key} onSelect={k => this.setKey(k)}>
-      <Tab eventKey="home" title="Home">
-        'Home home home'
-      </Tab>
-      <Tab eventKey="profile" title="Profile">
-        'The profile is important'
-      </Tab>
-      <Tab eventKey="contact" title="Contact">
-        Well this is disabled
+      <Tabs id="controlled-tab-example" activeKey={this.state.keys[project.id]} onSelect={k => this.setKey(k)} style={cardHeaderStyle}>
+      <Tab eventKey={'description'+project.id} title="Description">
+        <br></br>
         <b>Description:</b>
         <Card.Text>
           {project.description}
@@ -113,6 +110,15 @@ class Projects extends React.Component {
         {this.renerTechStack(stack)}
         <br/>
       </Tab>
+      <Tab eventKey={'comments'+project.id} title="Comments">
+      'The profile is important'
+      </Tab> 
+      <Tab eventKey={'links'+project.id} title="Links">
+        'Home home home'
+        GitHub : <a>a link to GitHub</a>
+      </Tab>
+
+
       </Tabs>
       <Button variant="primary">Join the team</Button>
       </Card.Body>
