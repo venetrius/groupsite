@@ -1,5 +1,5 @@
 import React from "react";
-import "./Projects.css";
+import * as styles from "./projects_style.js";
 import GeneralModal from './../Common/Modal/GeneralModal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -16,6 +16,7 @@ class Projects extends React.Component {
     super(props);
     this.state = {
       error: null,
+      showModal :false,
       isLoaded: false,
       list: [],
       keys : {}
@@ -28,7 +29,6 @@ class Projects extends React.Component {
       selectedStack.push(option.label)
     }
     axios.post('https://yyc-server.herokuapp.com/projects', {
-    //  axios.post('http://localhost:3030/projects', {
       name: event.target.elements.formProjectName.value,
       description: event.target.elements.projectDescription.value,
       difficulty_from : event.target.elements.difficultyFrom.value,
@@ -98,7 +98,7 @@ class Projects extends React.Component {
       <Card.Header><b>{project.name}</b></Card.Header>
       <Card.Body>
       <Tabs id="controlled-tab-example" activeKey={this.state.keys[project.id]} onSelect={k => this.setKey(k)} style={cardHeaderStyle}>
-      <Tab eventKey={'description'+project.id} title="Description">
+      <Tab  className={`${styles.projectCardClass}`} eventKey={'description'+project.id} title="Description">
         <br></br>
         <b>Description:</b>
         <Card.Text>
@@ -110,10 +110,10 @@ class Projects extends React.Component {
         {this.renerTechStack(stack)}
         <br/>
       </Tab>
-      <Tab eventKey={'comments'+project.id} title="Comments">
+      <Tab className={`${styles.projectCardClass}`} eventKey={'comments'+project.id} title="Comments">
       'The profile is important'
       </Tab> 
-      <Tab eventKey={'links'+project.id} title="Links">
+      <Tab className={`${styles.projectCardClass}`} eventKey={'links'+project.id} title="Links">
         'Home home home'
         GitHub : <a>a link to GitHub</a>
       </Tab>
@@ -129,7 +129,6 @@ class Projects extends React.Component {
 
   getFormSelector(choices, selectorId, isMultiple){
     const options = choices.map(choice => <option key={selectorId+choice}>{choice}</option>) 
-    console.log('len', options.length)
     return (
       <Form.Control  as="select" multiple={isMultiple}>
         {options}
@@ -172,7 +171,7 @@ class Projects extends React.Component {
           </Col>
         </Form.Row>
         <br/>
-        <Button className="modal-button" variant="secondary">
+        <Button className="modal-button" variant="secondary" onClick = {() => { console.log('fireing event'); this.setState({showModal : false}) }}>
           Close
         </Button>
         <Button className="modal-button" type="submit">Add project</Button>
@@ -191,6 +190,7 @@ class Projects extends React.Component {
       return (
         <div>
           <GeneralModal key='top'
+            show={this.state.showModal}
             title="Add a new project"
             buttonText ="Add project"
             modalBody={this.getProjectForm()}
@@ -199,11 +199,6 @@ class Projects extends React.Component {
           <br/>
           {list}
           <br/>
-          <GeneralModal key='bottom'
-            title="Add a new project"
-            buttonText ="Add project"
-            modalBody={this.getProjectForm()}
-          ></GeneralModal>
         </div>
       );
     }

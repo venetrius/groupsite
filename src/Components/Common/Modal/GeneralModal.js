@@ -13,10 +13,10 @@ class GeneralModal extends Component {
       this.handleClose = this.handleClose.bind(this);
   
       this.state = {
-        show: false,
+        show: this.props.show,
       };
     }
-  
+
     handleClose() {
       this.setState({ show: false });
     }
