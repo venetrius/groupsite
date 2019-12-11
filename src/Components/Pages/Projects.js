@@ -1,14 +1,13 @@
 import React from "react";
+import Project from './Project';
+
 import * as styles from "./projects_style.js";
 import GeneralModal from './../Common/Modal/GeneralModal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Badge from 'react-bootstrap/Badge';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
+
 
 class Projects extends React.Component {
 
@@ -21,6 +20,7 @@ class Projects extends React.Component {
       list: [],
       keys : {}
     };
+    this.url = 'http://localhost:3030'
   }
 
   handleAddProject(event) {
@@ -28,7 +28,7 @@ class Projects extends React.Component {
     for(let option of event.target.elements.techStack.selectedOptions){
       selectedStack.push(option.label)
     }
-    axios.post('https://yyc-server.herokuapp.com/projects', {
+    axios.post(this.url+'/projects', {
       name: event.target.elements.formProjectName.value,
       description: event.target.elements.projectDescription.value,
       difficulty_from : event.target.elements.difficultyFrom.value,
@@ -48,7 +48,7 @@ class Projects extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://yyc-server.herokuapp.com/projects")
+    fetch(this.url + "/projects")
       .then(res => res.json())
       .then(
         (result) => {
@@ -66,65 +66,8 @@ class Projects extends React.Component {
       )
   }
 
-  getRandomVariant(){
-    const variant = ['primary' , 'secondary' , 'success' , 'danger' , 'warning' , 'info' , 'light' , 'dark']
-    return variant[Math.floor(Math.random()*variant.length)]
-  }
-
-  renerTechStack(techStackAsString){
-    const badges = techStackAsString.split(',').map(tech =>   
-      <Badge pill variant={this.getRandomVariant()} style={{marginRight: "20px"}}> 
-        {tech}
-      </Badge>
-    )
-    return (
-    <div>
-      {badges}
-    </div>
-    )
-  }
-
-  setKey(key){
-    this.setState({key})
-  }
-
   renderProject(project){
-    const cardHeaderStyle = {marginBottom : '0rem'}
-
-    const stack = project.selected_stack || ''
-    return (
-      <div>
-      <Card  key = {`projectCard_${project.id}`} >
-      <Card.Header><b>{project.name}</b></Card.Header>
-      <Card.Body>
-      <Tabs id="controlled-tab-example" activeKey={this.state.keys[project.id]} onSelect={k => this.setKey(k)} style={cardHeaderStyle}>
-      <Tab  className={`${styles.projectCardClass}`} eventKey={'description'+project.id} title="Description">
-        <br></br>
-        <b>Description:</b>
-        <Card.Text>
-          {project.description}
-        </Card.Text>
-        <Card.Text>
-          difficulty: {project.difficulty_from} - {project.difficulty_to}
-        </Card.Text>
-        {this.renerTechStack(stack)}
-        <br/>
-      </Tab>
-      <Tab className={`${styles.projectCardClass}`} eventKey={'comments'+project.id} title="Comments">
-      'The profile is important'
-      </Tab> 
-      <Tab className={`${styles.projectCardClass}`} eventKey={'links'+project.id} title="Links">
-        'Home home home'
-        GitHub : <a>a link to GitHub</a>
-      </Tab>
-
-
-      </Tabs>
-      <Button variant="primary">Join the team</Button>
-      </Card.Body>
-    </Card>
-    <br/>
-    </div>)
+    return(<Project props={project} key={project.id}></Project>)
   }
 
   getFormSelector(choices, selectorId, isMultiple){
