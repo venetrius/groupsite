@@ -1,4 +1,5 @@
 import React, { useState }  from 'react';
+import ChatWindow from './../Common/Chat/index';
 import Card from 'react-bootstrap/Card';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -56,6 +57,7 @@ const Project = (props) => {
 
             <Tab className={`${styles.projectCardClass}`} eventKey={'comments' + project.id} title="Comments">
               'The profile is important'
+              <ChatWindow/>
             </Tab>
 
             <Tab className={`${styles.projectCardClass}`} eventKey={'links' + project.id} title="Links">
