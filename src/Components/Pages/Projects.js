@@ -20,7 +20,7 @@ class Projects extends React.Component {
       list: [],
       keys : {}
     };
-    this.url = 'http://localhost:3030'
+    this.url = 'https://yyc-server.herokuapp.com'
   }
 
   handleAddProject(event) {
