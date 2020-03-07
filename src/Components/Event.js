@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import {
   Details,
@@ -7,8 +7,8 @@ import {
   InfoSpan,
   InfoUl,
   SubHeaderSpan,
-  Summary,
-} from './StyledEvent';
+  Summary
+} from "./StyledEvent";
 
 export const Event = ({
   title,
@@ -17,12 +17,16 @@ export const Event = ({
   summary,
   prereqs,
   photos,
-  links,
+  links
 }) => {
+  //const { isPreview, changeIsPreview } = useState(false);
+
   const linkComps = links
     ? links.map(({ href, linkText }) => (
-        <li key={linkText}>
-          <a href={href}>{linkText}</a>
+        <li>
+          <a key={linkText} href={href}>
+            {linkText}
+          </a>
         </li>
       ))
     : [];
@@ -36,7 +40,7 @@ export const Event = ({
   return (
     <Details>
       <Summary>
-        <HeaderSpan>{title}</HeaderSpan> on{' '}
+        <HeaderSpan>{title}</HeaderSpan> on{" "}
         <SubHeaderSpan>{date}</SubHeaderSpan>
       </Summary>
       <InfoUl>
