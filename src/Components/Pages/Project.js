@@ -38,29 +38,32 @@ const Project = (props) => {
 
   return (
     <div>
-      <Card key={`projectCard_${project.id}`} >
-        <Card.Header><b>{project.name}</b></Card.Header>
+
+      <Card className={`${styles.projectCardClass}`}   key={`projectCard_${project.id}`} >
+        <Card.Header><h3>Project Name: <b>{project.name}</b></h3></Card.Header>
         <Card.Body>
-          <Tabs id="controlled-tab-example" activeKey={activeKey} onSelect={(k) => setActiveKey(k)} style={cardHeaderStyle}>
-            <Tab className={`${styles.projectCardClass}`} eventKey={'description' + project.id} title="Description">
+          <Tabs id="controlled-tab-example" activeKey={activeKey} onSelect={(k) => setActiveKey(k)} className={`${styles.cardHeaderNav}`}>
+            <Tab className={`${styles.projectCarContent}`} eventKey={'description' + project.id} title="Description">
               <br></br>
-              <b>Description:</b>
-              <Card.Text>
+              <Card.Text className={`${styles.cardText}`}>
+              <b>Description:</b><br/>
                 {project.description}
               </Card.Text>
-              <Card.Text>
+              <Card.Text className={`${styles.cardText}`}>
                 difficulty: {project.difficulty_from} - {project.difficulty_to}
               </Card.Text>
               {renerTechStack(stack)}
               <br />
             </Tab>
 
-            <Tab className={`${styles.projectCardClass}`} eventKey={'comments' + project.id} title="Comments">
+            <Tab className={`${styles.projectCarContent}`} eventKey={'comments' + project.id} title="Comments">
+            <br></br>
               'The profile is important'
               <ChatWindow/>
             </Tab>
 
-            <Tab className={`${styles.projectCardClass}`} eventKey={'links' + project.id} title="Links">
+            <Tab className={`${styles.projectCarContent}`} eventKey={'links' + project.id} title="Links">
+            <br></br>
               Home home home
               GitHub : <a> a link to GitHub</a>
             </Tab>
