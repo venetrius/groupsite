@@ -1,48 +1,56 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Header, Footer, Body } from "./Components";
+import Login from './Components/Pages/Login';
+import Events from './Components/Events';
+import Tutorial from './Components/Pages/Tutorial';
+import Home from './Components/Pages/Home';
+import Projects from './Components/Pages/Projects';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pages: [
-                "Home",
-                "Tutorial",
-                "Events",
-                "Projects",
-                "Join us",
-                "Contact"
-            ],
-            page: "Home"
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      pages: [
+        "Home",
+        "Tutorial",
+        "Events",
+        "Projects",
+        "Join us",
+        "Contact"
+      ],
+      page: "Home"
+    };
+  }
 
-    handleClick(nextPage) {
-        this.setState({
-            page: nextPage
-        });
-    }
+  handleClick(nextPage) {
+    this.setState({
+      page: nextPage
+    });
+  }
 
-    render() {
-        return (
-            <div>
-                <Header
-                    page={this.state.page}
-                    onClick={i => this.handleClick(i)}
-                    pages={this.state.pages}
-                />
-                <div className="CCcontent">
-                    <Body
-                        page={this.state.page}
-                        onClick={i => this.handleClick(i)}
-                    />
-                </div>
+  render() {
+    return (
+      <Router>
+          <Header
+            page={this.state.page}
+            onClick={i => this.handleClick(i)}
+            pages={this.state.pages}
+          />
+          <Switch>
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/events" component={Events} />
 
-                <Footer></Footer>
-            </div>
-        );
-    }
+            <Route exact path="/tutorial" component={Tutorial} />
+            <Route exact path="/login" component={Login} />
+            <Route exact patth="/projects" component={Projects} />
+          </Switch>
+          <Footer></Footer>
+      </Router>
+    );
+  }
 }
 
 export default App;
