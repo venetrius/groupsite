@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import logo from '../logo.png';
 
 class  Header extends React.Component{
@@ -6,13 +7,14 @@ class  Header extends React.Component{
       if (this.props.page === name){
         return(
           <li key={name} className="nav-item active">
-            <a className="nav-link"> {name}</a> 
+            <Link className="nav-link"> {name}</Link> 
         </li>
         );
       }else{
+        const target = `${name.toLowerCase()}`
         return(
           <li  key={name} className="nav-item">
-            <a className="nav-link" onClick={() =>{this.props.onClick(name)}}> {name}</a>
+            <Link className="nav-link" to={target} onClick={() =>{this.props.onClick(name)}}> {name}</Link>
           </li>
         );
       }
