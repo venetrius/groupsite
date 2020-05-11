@@ -1,65 +1,61 @@
-import React, { Component } from "react";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import React, { useState } from 'react';
+import { Redirect } from 'react-router'
+import Axios from 'axios';
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
+import qs from 'query-string';
+import { useGlobal } from '../../state';
 
-    this.state = {
-      email: "",
-      password: ""
-    };
-  }
-
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
-
-  handleChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  }
-
-  handleSubmit = event => {
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-        <div className="row row-content">
-        <div className="col-12 col-md-4"></div>
-      <div className="Login col-12 col-md-4">
-        <h2>Subscribe</h2>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="email" bsSize="large">
-            <Form.Control
-              autoFocus
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="password" bsSize="large">
-            <Form.Control
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </Form.Group>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
-        </Form>
-      </div>
-      <div className="col-12 col-md-4"></div>
-      </div>
-    );
-  }
+const backendEndpoint = 'https://yyc-server.herokuapp.com';
+const getTokenFromQuery = () => {
+  const queryValues = qs.parse(window.location.search);
+  return queryValues.token
 }
+
+const Login = () => {
+  const [loadingSpinner, setLoadingSpinner] = useState(false)
+  const [loadUser, setLoadUser] = useState(false)
+  const [ global, setGlobal, user ] = useGlobal()
+
+  function fetchUser(token) {
+    setLoadUser(true)
+    Axios.get(`${backendEndpoint}/user/profile`, { headers: { Authorization: `Bearer ${token}` } })
+    .then((res) => {
+      setGlobal({ ...global, user: res.data.data })
+      setLoadUser(false)
+    })
+    .catch(error => { setLoadUser(false); console.log('error', error)})
+  }
+
+  if(global.user) {
+    return <Redirect to="/projects" />
+  }
+  const token = getTokenFromQuery()
+
+  if (token && !loadingSpinner) {
+    if (!user && !loadUser) {
+      fetchUser(token)
+    }
+    setGlobal({...global, token})
+    setLoadingSpinner(true)
+  }
+
+  if (loadingSpinner) {
+    return (
+      <div>
+        <button type="primary" loading>
+          Loading
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <main id="login-page">
+      <div>YYC Labs</div>
+      <p>A GitHub account is required to login to YYC Labs.</p>
+      <a href={backendEndpoint +"/auth/github"}>  login </a>
+    </main>
+  )
+}
+
+export default Login

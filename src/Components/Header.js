@@ -7,7 +7,7 @@ class  Header extends React.Component{
       if (this.props.page === name){
         return(
           <li key={name} className="nav-item active">
-            <Link className="nav-link"> {name}</Link> 
+            <a className="nav-link"> {name}</a> 
         </li>
         );
       }else{
@@ -43,6 +43,9 @@ class  Header extends React.Component{
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+          <ul className="navbar-nav nav-item active" style={{color: 'white', paddingLeft: '2px'}}>
+            <Link className="nav-link" to='/login' onClick={() =>{this.props.onClick('login')}}> Login</Link>
+          </ul>
         </div>
       </nav>
     )
