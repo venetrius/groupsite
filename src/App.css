@@ -42,14 +42,9 @@ nav {
   padding: 0px,0px,8px,8px;
 }
 footer {
-  /*position: fixed;*/
-  position: relative;
-  overflow: hidden;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+
   text-align: center;
-  z-index: 3;
+
 }
 
 .App-link {
