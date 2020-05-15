@@ -4,8 +4,6 @@ import { Tabs, Tag } from 'antd';
 const { TabPane } = Tabs;
 
 const Project = (props) => {
-
-  console.log(props.props)
   const project = props.props
 
   const stack = project.selected_stack || ''
@@ -40,7 +38,7 @@ const Project = (props) => {
   )
 
   return (
-    <div>
+    <div style={{paddingLeft: '25px', maxWidth: '800px'}}>
       <h3><b>{project.name}</b></h3>
       <Tabs defaultActiveKey="1" style={{height: '250px', overflow: 'auto'}}>
         <TabPane tab="Description" key="1">
