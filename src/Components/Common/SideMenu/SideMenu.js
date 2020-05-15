@@ -1,7 +1,7 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
+import { Button } from 'antd';
 import './SideMenu.css';
- 
+
 class SideMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -12,15 +12,15 @@ class SideMenu extends React.Component {
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
- 
+
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
   }
- 
+
   renderNavItem(item){
     var ref = "#"+item[1];
     return(
-      <Button className="side-menu-item" variant="link" href={ref}> {item[0]}</Button>
+      <Button className="side-menu-item" type="link" href={ref}> {item[0]}</Button>
     );
   }
 
@@ -34,7 +34,7 @@ class SideMenu extends React.Component {
     for(var i=0; i < prop.length; i++) {
       navItems.push(this.renderNavItem(prop[i]));
       // do something with "key" and "value" variables
-     
+
     }
     if(this.state.hidden){
       return(
