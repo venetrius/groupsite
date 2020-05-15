@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from 'antd';
+import Button from 'antd/es/button';
 import './SideMenu.css';
 
 class SideMenu extends React.Component {

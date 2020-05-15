@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Modal, Form, Input, Button } from 'antd';
+import Modal from 'antd/es/modal'
+import Form from 'antd/es/form'
+import Input from 'antd/es/input'
+import Button from 'antd/es/button'
 import './QuestionModal.css';
 
 

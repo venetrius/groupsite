@@ -2,7 +2,7 @@ import React from "react";
 import Project from './Project';
 import ProjectForm from './NewProject'
 import axios from 'axios';
-import { Button } from 'antd';
+import Button from 'antd/es/button';
 
 
 class Projects extends React.Component {

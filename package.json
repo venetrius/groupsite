@@ -8,8 +8,6 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "antd": "^4.2.2",
     "axios": "^0.19.2",
-    "bootstrap": "^4.3.1",
-    "bootstrap-social": "^5.1.1",
     "emotion": "^10.0.23",
     "globalize": "^1.4.2",
     "query-string": "^6.12.1",
@@ -35,5 +33,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }

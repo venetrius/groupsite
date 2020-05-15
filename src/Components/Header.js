@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import logo from '../Logo3.1.png';
 import { useGlobal } from '../state';
 import 'antd/dist/antd.css';
-import { Menu } from 'antd';
+import Menu from 'antd/es/menu';
 
 
 

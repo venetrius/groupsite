@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import 'antd/dist/antd.css';
-import { Form, Input, Button, Select } from 'antd';
+import Form from 'antd/es/form'
+import Input from 'antd/es/input'
+import Button from 'antd/es/button'
+import Select from 'antd/es/select'
+
 const Option = Select.Option;
 
 const techStacks = ['JavaScript', 'Node.js', 'React.js', 'Python','Java', '.Net', 'REST', 'GrapQL', 'PSQL', 'MySQL', 'MongoDB']

@@ -1,6 +1,7 @@
 import React from 'react';
 import ChatWindow from './../Common/Chat/index';
-import { Tabs, Tag } from 'antd';
+import Tabs from 'antd/es/tabs';
+import Tag from 'antd/es/tag'
 const { TabPane } = Tabs;
 
 const Project = (props) => {
