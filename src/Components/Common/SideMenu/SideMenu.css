@@ -1,0 +1,19 @@
+.CCsidemenu{
+    min-width: 120px;
+    margin-left: -10px;
+    /* background-color:cornflowerblue; */
+    top: 48px !important;
+    overflow: auto;
+    height: 95vh;
+    z-index: 2;
+    position: sticky;
+}
+
+.seeThroug{
+    opacity: 0.1;
+}
+
+.CCsideButton{
+    position: absolute;
+    z-index: 2;
+}
