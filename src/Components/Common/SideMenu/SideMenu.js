@@ -22,7 +22,9 @@ class SideMenu extends React.Component {
   renderNavItem(item){
     var ref = "#"+item[1];
     return(
-      <Button type="link" href={ref}> {item[0]}</Button>
+      <div>
+        <Button type="link" href={ref}> {item[0]}</Button>
+      </div>
     );
   }
 
