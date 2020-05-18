@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Highlight from 'react-highlight';
+import Row from 'antd/es/row';
+import Col from 'antd/es/col';
 
 import SideMenu from '../Common/SideMenu/SideMenu';
 import SectionHeader from '../Common/SectionHeader/SectionHeader';
@@ -8,7 +10,13 @@ class Tutorial extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isSideMenuVisible: false
+    };
+  }
+
+  setSideMenuVisibilityChanged = visibility => {
+    this.setState({ isSideMenuVisible: visibility })
   }
 
   render() {
@@ -20,10 +28,9 @@ class Tutorial extends Component {
       ["React Components", "tutorial-component"]
     ];
     return (
-      <div>
-        <div className="row row-content">
-          <SideMenu menuitem={dict} />
-          <div className="col wSidebar">
+      <Row className="row row-content">
+        <SideMenu menuitem={dict} onHideChangeMenuState={this.setSideMenuVisibilityChanged}/>
+        <Col span={this.state.isSideMenuVisible ? 24 : 20}>
             <h1>Tutorial</h1>
             <br/>
             <h2> If you are looking for a way to catch up to the group this might help you</h2>
@@ -65,8 +72,8 @@ class Tutorial extends Component {
                   <br/>One more thing. When a function returns a JSX code snippet it should be enclosed into one parent tag.
                 </div>
               , `class Foo extends React.Component {
-  render(){                
-    return (<div>bar</div>) 
+  render(){
+    return (<div>bar</div>)
   }
 }
 {/*....*/}
@@ -78,25 +85,25 @@ class Tutorial extends Component {
             <br/>
             <p id="tutorial-component"> <SectionHeader title="React Components" buttonText="Questions?"/>
               {example(
-                <div>A class which extends React.Component has a handful of useful features 
+                <div>A class which extends React.Component has a handful of useful features
                   <ul>
-                    <li>A React component has a state, which can be set in the cunstructor. Later on, you can modify a state of a component 
-                        by calling the this.setstate() function. Doing that will (sooner or later) result of the rerendering of the component. 
+                    <li>A React component has a state, which can be set in the cunstructor. Later on, you can modify a state of a component
+                        by calling the this.setstate() function. Doing that will (sooner or later) result of the rerendering of the component.
                         For more check out a &nbsp;<a href="https://reactjs.org/docs/react-component.html#setstate">useful article</a>.
                     </li>
                     <li>
                       The render method is the only mandatory method what you have to implement. It is automatically called when your component gets used.
-                      It should return the appropriate JSX code. 
+                      It should return the appropriate JSX code.
                     </li>
                     <li>
                       Other useful methods are&nbsp;
-                       <a href="https://reactjs.org/docs/react-component.html#componentdidmount">componentDidMount()</a> 
+                       <a href="https://reactjs.org/docs/react-component.html#componentdidmount">componentDidMount()</a>
                       &nbsp;and&nbsp;<a href="https://reactjs.org/docs/react-component.html#componentDidUpdate()">componentDidUpdate()</a> &nbsp;
-                      but you do not have to know everything just to start to learn... 
+                      but you do not have to know everything just to start to learn...
                     </li>
                   </ul>
                 </div>
-                , 
+                ,
 `class Foo extends React.Component {
   constructor(props) {
     super(props);
@@ -105,7 +112,7 @@ class Tutorial extends Component {
       prop: props.val,
       otherProp: proprs.otherVal
         };
-  
+
   methodExample(){
     this.setState(
       {
@@ -113,15 +120,15 @@ class Tutorial extends Component {
       }
     )
   }
-        
-  render(){                
-    return (<div>bar</div>) 
+
+  render(){
+    return (<div>bar</div>)
   }
 }
 
 /*usage*/
 <Foo val=specificVal otherVal={this.functionCall()}/>
-`                 
+`
                 )}
             </p>
 
@@ -129,22 +136,22 @@ class Tutorial extends Component {
               <h4>Components and function</h4>
               <h5>In React you can create a lot of things</h5>
             </p>
-          </div>
-        </div></div>
+          </Col>
+      </Row>
     )
   }
 }
 
 function example(description, toHighlight) {
   return (
-    <div className="row row-container">
-      <div className="col-12 col-md-6">
+    <Row>
+      <Col span={12}>
         {description}
-      </div>
-      <div className="col-12 col-md-6">
+      </Col>
+      <Col span={12}>
         <Highlight language="javascript">{toHighlight}</Highlight>
-      </div>
-    </div>
+      </Col>
+    </Row>
 
   )
 }

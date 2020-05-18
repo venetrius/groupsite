@@ -127,16 +127,6 @@ footer {
   margin-top: 20px;
 }
 
-/* van-side-bar*/
-.fixed-top{
-  background-color:cornflowerblue;
-  width: 12vw;
-  height: 90vh;
-  top: 10vh !important;
-  overflow: auto;
-  z-index: 2;
-}
-
 .CCfooter{
   position: absolute;
   bottom: 0px;
