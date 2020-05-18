@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router'
 import Axios from 'axios';
+import githubIcon from '../../GitHub.png';
 
 import qs from 'query-string';
 import { useGlobal } from '../../state';
@@ -51,9 +52,12 @@ const Login = () => {
 
   return (
     <main id="login-page">
-      <div>YYC Labs</div>
-      <p>A GitHub account is required to login to YYC Labs.</p>
-      <a href={backendEndpoint +"/auth/github"}>  login </a>
+      <h2>Sofware Developers of Calgary</h2>
+      <p>A GitHub account is required to login</p>
+      <div style={{height: '40px', lineHeight: '40px' ,fontSize:"medium", border: '1px solid blue', width: '180px', justifyContent: 'center'}}>
+        <img  alt="" src={githubIcon} style={{height: '32px', paddingBottom: '4px', paddingLeft: '2px'}} />
+        <a style={{float: 'right', paddingRight: '10px'}} href={backendEndpoint +"/auth/github"}>  Login with GitHub </a>
+      </div>
     </main>
   )
 }
