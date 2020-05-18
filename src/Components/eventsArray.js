@@ -1,4 +1,3 @@
-import photo from "../hilderman-bg.jpg";
 
 export const eventsArray = [
   {
@@ -7,7 +6,7 @@ export const eventsArray = [
     location: "location",
     summary: "summary",
     prereqs: "prereqs",
-    photos: [{ src: photo, alt: "photo" }],
+    photos: [],
     links: [{ href: "#", linkText: "link" }]
   },
   {
@@ -16,7 +15,7 @@ export const eventsArray = [
     location: "location",
     summary: "summary",
     prereqs: "prereqs",
-    photos: [{ src: photo, alt: "photo" }],
+    photos: [],
     links: [{ href: "#", linkText: "link" }]
   }
 ];

@@ -39,7 +39,7 @@ class App extends Component {
             onClick={i => this.handleClick(i)}
             pages={this.state.pages}
           />
-          <div style={{position: 'absolute', top:'65px', marginLeft: '10px' }}>
+          <div style={{marginLeft: '10px', minHeight: 'calc(100vh - 110px)' }}>
             <Switch>
               <Route exact path="/home" component={Home} />
               <Route exact path="/events" component={Events} />
