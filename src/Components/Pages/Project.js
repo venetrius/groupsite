@@ -14,7 +14,7 @@ const Project = (props) => {
     return (
       <div>
         {techStackAsString.split(',').map(tech =>
-          <Tag color={getRandomVariant()} style={{marginRight: "20px"}}>
+          <Tag key={`${tech}-badge`}color={getRandomVariant()} style={{marginRight: "20px"}}>
             {tech}
           </Tag>
         )}

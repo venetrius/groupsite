@@ -35,32 +35,32 @@ class Tutorial extends Component {
             <br/>
             <h2> If you are looking for a way to catch up to the group this might help you</h2>
             <br/><br/>
-            <p id="why">
+            <div id="why">
               <h3>Why do we learn React.js?</h3>
               <div>Most of us aren't a front end developer. But we felt a need
                   to learn a modern front end framework.
-                    </div>
-            </p>
-            <p>
+              </div>
+            </div>
+            <div>
               <h3 id="what" > What is React?</h3>
               React is a JavaScript UI library developed by Facebook.
                     To learn more: <br/>
               <a href="https://www.w3schools.com/whatis/whatis_react.asp">https://www.w3schools.com/whatis/whatis_react.asp </a>
-            </p>
-            <p id="tutorial">List of tutorials
+            </div>
+            <div id="tutorial">List of tutorials
                     <ul>
                 <li><a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/tutorial/tutorial.html">
                   'Official' React tutorial hands-on (Picking up terminology on the way)
                             </a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href="https://www.robinwieruch.de/javascript-fundamentals-react-requirements/#react-arrow-functions">A tutorial with more fundamentals, but without exercises</a></li>
               </ul>
-            </p>
+            </div>
 
             <h4>While we are happy to see you on any of our hackathons, there are a few things you should definitely know (from prev. experience / tutorials) to
                 get the best out of our sessions.
             </h4>
             <br/>
-            <p id="JSX">
+            <div id="JSX">
             <SectionHeader title="Javascript XML (JSX)" buttonText="Questions?"/>
               {example(
                 <div>
@@ -80,10 +80,10 @@ class Tutorial extends Component {
 <div>
   <Foo/>
 </div>`                  )}
-            </p>
+            </div>
 
             <br/>
-            <p id="tutorial-component"> <SectionHeader title="React Components" buttonText="Questions?"/>
+            <div id="tutorial-component"> <SectionHeader title="React Components" buttonText="Questions?"/>
               {example(
                 <div>A class which extends React.Component has a handful of useful features
                   <ul>
@@ -130,12 +130,12 @@ class Tutorial extends Component {
 <Foo val=specificVal otherVal={this.functionCall()}/>
 `
                 )}
-            </p>
+            </div>
 
-            <p id="tutorial-component2">
+            <div id="tutorial-component2">
               <h4>Components and function</h4>
               <h5>In React you can create a lot of things</h5>
-            </p>
+            </div>
           </Col>
       </Row>
     )
