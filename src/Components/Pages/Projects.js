@@ -65,10 +65,6 @@ class Projects extends React.Component {
     this.setState({display: !this.setState.display})
   }
 
-  renderProject(project){
-    return(<Project props={project} key={project.id}></Project>)
-  }
-
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
@@ -76,7 +72,6 @@ class Projects extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      const list = items.map(project => this.renderProject(project))
       return (
         <div>
           <ProjectForm
@@ -93,7 +88,7 @@ class Projects extends React.Component {
           </Button>
           <br/>
           <br/>
-          {list}
+          { items.map(project => <Project props={project} key={project.id}></Project> ) }
         </div>
       );
     }
