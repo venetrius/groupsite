@@ -73,7 +73,7 @@ class Projects extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div>
+        <div style={{paddingBottom: '25px'}}>
           <ProjectForm
             onSubmit={this.handleAddProject}
             projectsPage={this}
@@ -81,6 +81,8 @@ class Projects extends React.Component {
             resetSwitch={this.state.resetProjectFormSwitch}
             />
           <Button
+            style={{float: 'right',
+                    margin: '20px' }}
             type="primary"
             onClick={() => {this.setState({ showProjectForm: !this.state.showProjectForm })}}
           >

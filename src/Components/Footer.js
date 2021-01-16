@@ -7,7 +7,7 @@ import { faEnvelopeSquare, faLaptop} from '@fortawesome/free-solid-svg-icons';
 
 export default function Footer() {
   return (
-      <footer>
+      <footer className='footer'>
         <Row>
           <Col span={12}>
             <a href="mailto:xyz"><FontAwesomeIcon icon={ faEnvelopeSquare }/><span></span>mail to us</a>

@@ -41,7 +41,7 @@ const  Header = (props) => {
     }
 
     return (
-      <Menu selectedKeys={[props.page]} mode="horizontal">
+      <Menu selectedKeys={[props.page]} mode="horizontal" className={'header'}>
           <Menu.Item key='logo' title='logo'>
             <Link to='home' onClick={() =>{props.onClick('Home')}}> <img src={logo} style={{height: '45px'}} /></Link>
           </Menu.Item>
