@@ -19,10 +19,10 @@ class SideMenu extends React.Component {
     this.setState({ sidebarOpen: open });
   }
 
-  renderNavItem(item){
+  renderNavItem(item, key){
     var ref = "#"+item[1];
     return(
-      <div>
+      <div key={key}>
         <Button type="link" href={ref}> {item[0]}</Button>
       </div>
     );
@@ -35,9 +35,9 @@ class SideMenu extends React.Component {
 
   render() {
     var prop =  this.state.menuitems;
-    let navItems = [<div></div>];
+    let navItems = [<div key="root"></div>];
     for(var i=0; i < prop.length; i++) {
-      navItems.push(this.renderNavItem(prop[i]));
+      navItems.push(this.renderNavItem(prop[i], i));
     }
 
     if(this.state.hidden){

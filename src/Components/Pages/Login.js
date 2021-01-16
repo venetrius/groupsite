@@ -43,13 +43,12 @@ const Login = () => {
   if (loadingSpinner) {
     return (
       <div>
-        <button type="primary" loading>
+        <button type="primary" loading={"loading"}>
           Loading
         </button>
       </div>
     )
   }
-
   return (
     <main id="login-page">
       <h2>Sofware Developers of Calgary</h2>

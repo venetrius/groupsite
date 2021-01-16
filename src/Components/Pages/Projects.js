@@ -65,10 +65,6 @@ class Projects extends React.Component {
     this.setState({display: !this.setState.display})
   }
 
-  renderProject(project){
-    return(<Project props={project} key={project.id}></Project>)
-  }
-
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
@@ -76,9 +72,8 @@ class Projects extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      const list = items.map(project => this.renderProject(project))
       return (
-        <div>
+        <div style={{paddingBottom: '25px'}}>
           <ProjectForm
             onSubmit={this.handleAddProject}
             projectsPage={this}
@@ -86,6 +81,8 @@ class Projects extends React.Component {
             resetSwitch={this.state.resetProjectFormSwitch}
             />
           <Button
+            style={{float: 'right',
+                    margin: '20px' }}
             type="primary"
             onClick={() => {this.setState({ showProjectForm: !this.state.showProjectForm })}}
           >
@@ -93,7 +90,7 @@ class Projects extends React.Component {
           </Button>
           <br/>
           <br/>
-          {list}
+          { items.map(project => <Project props={project} key={project.id}></Project> ) }
         </div>
       );
     }

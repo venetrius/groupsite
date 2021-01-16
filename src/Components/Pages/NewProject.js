@@ -26,7 +26,7 @@ const tailLayout = {
   },
 };
 
-const getTechStackOptions = () =>  techStacks.map(tech => <Option value={tech}>{tech}</Option> )
+const getTechStackOptions = () =>  techStacks.map(tech => <Option key={tech} value={tech}>{tech}</Option> )
 
 const ProjectForm = props => {
   const [form] = Form.useForm();
