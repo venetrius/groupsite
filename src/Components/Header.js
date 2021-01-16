@@ -24,7 +24,7 @@ const  Header = (props) => {
     function authButton() {
       const key = authenticated ? 'logout' : 'login'
       const actionHolder = authenticated ?
-        <a onClick={() =>{setGlobal({ ...global, user: null, token:null }) }}> LogOut </a>
+        <a onClick={() =>{setGlobal({ ...global, user: null, token:null }); localStorage.removeItem('serverApiToken') }}> LogOut </a>
         :  <Link to='/login' onClick={() =>{props.onClick('login')}}> Login</Link>
 
       return (
