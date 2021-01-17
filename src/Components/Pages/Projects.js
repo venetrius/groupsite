@@ -1,5 +1,5 @@
 import React from "react";
-import Project from './Project';
+import ProjectSummary from './ProjectSummary';
 import ProjectForm from './NewProject'
 import axios from 'axios';
 import Button from 'antd/es/button';
@@ -90,7 +90,7 @@ class Projects extends React.Component {
           </Button>
           <br/>
           <br/>
-          { items.map(project => <Project props={project} key={project.id}></Project> ) }
+          { items.map(project => <ProjectSummary props={project} key={project.id} /> ) }
         </div>
       );
     }
