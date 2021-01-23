@@ -1,9 +1,9 @@
 import React from "react";
-import Project from './Project';
+import ProjectSummary from './ProjectSummary';
 import ProjectForm from './NewProject'
 import axios from 'axios';
 import Button from 'antd/es/button';
-
+import { URL } from "../../config";
 
 class Projects extends React.Component {
   constructor(props) {
@@ -16,18 +16,21 @@ class Projects extends React.Component {
       list: [],
       keys : {}
     };
-    this.url = 'https://yyc-server.herokuapp.com'
   }
 
   handleAddProject(formData, projectsPage) {
-    axios.post(projectsPage.url+'/projects', {
+    const token = localStorage.getItem('serverApiToken')
+    const selected_stack = (formData.technologies || []).map(tech => tech.value)
+    axios.post(URL+'/projects', {
       name: formData.name,
       description: formData.description,
       // difficulty_from : ,
       // difficulty_to : ,
-      selected_stack : formData.technologies.map(tech => tech.value)
-
-    })
+      selected_stack,
+      summary: formData.summary
+      },
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
     .then(response => {
       const data = response.data[0];
       const newItemList = [data].concat(projectsPage.state.items)
@@ -43,7 +46,7 @@ class Projects extends React.Component {
   }
 
   componentDidMount() {
-    fetch(this.url + "/projects")
+    fetch(URL + "/projects")
       .then(res => res.json())
       .then(
         (result) => {
@@ -65,10 +68,6 @@ class Projects extends React.Component {
     this.setState({display: !this.setState.display})
   }
 
-  renderProject(project){
-    return(<Project props={project} key={project.id}></Project>)
-  }
-
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
@@ -76,9 +75,8 @@ class Projects extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      const list = items.map(project => this.renderProject(project))
       return (
-        <div>
+        <div style={{paddingBottom: '25px'}}>
           <ProjectForm
             onSubmit={this.handleAddProject}
             projectsPage={this}
@@ -86,6 +84,8 @@ class Projects extends React.Component {
             resetSwitch={this.state.resetProjectFormSwitch}
             />
           <Button
+            style={{float: 'right',
+                    margin: '20px' }}
             type="primary"
             onClick={() => {this.setState({ showProjectForm: !this.state.showProjectForm })}}
           >
@@ -93,7 +93,7 @@ class Projects extends React.Component {
           </Button>
           <br/>
           <br/>
-          {list}
+          { items.map(project => <ProjectSummary props={project} key={project.id} /> ) }
         </div>
       );
     }

@@ -1,3 +1,7 @@
+body {
+  background-color: lightgrey;
+}
+
 .App {
   text-align: center;
 }
@@ -30,9 +34,9 @@ nav {
   opacity: 0.5;
 }
 
-.show{
+/* .show{
   background-color: #eee;
-}
+} */
 
 .nav-link:hover{
   cursor: pointer;
@@ -71,7 +75,7 @@ footer {
   padding-left: 3%;
   padding-right: 3%;
   min-height: 89vh;
-  background-color: #eee;
+  /* background-color: #eee; */
 }
 
 .wSidebar{
@@ -121,7 +125,7 @@ footer {
   padding-top:10%;
   padding-bottom: 10%;
   overflow: auto;
-  background-color: #eee;
+  /* background-color: #eee; */
   height: 700px;
   padding: 0 20px 20px 20px;
   margin-top: 20px;
@@ -143,4 +147,33 @@ footer {
 
 h1, h2{
   text-align: center;
+}
+
+.footer, .header {
+  background-color: orange !important;
+}
+
+.project-summary {
+  margin: 25px;
+  padding-left: 10px;
+  border: 2px;
+  border-style: groove;
+  max-width: 500px;
+}
+
+.project-summary:hover {
+  border-color: #61dafb;
+}
+
+.centered-text {
+  text-align: center;
+  display: block;
+}
+
+.ant-btn {
+  margin-right: 8px;
+}
+
+.right {
+  float: right;
 }
