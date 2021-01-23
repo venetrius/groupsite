@@ -7,8 +7,11 @@ import 'antd/dist/antd.css';
 import { withRouter } from "react-router";
 import NewCommentForm from '../Common/NewCommentForm'
 import TechStack from '../Common/TechStack/TechStack'
+// import { Image } from '@ant-design/icons'
 
 const { TextArea } = Input;
+
+const firstTwoLetters = str => (!str || str.length < 3) ? str : str.substring(0, 2)
 
 class ProjectPage extends React.Component {
   constructor(props) {
@@ -43,10 +46,14 @@ class ProjectPage extends React.Component {
 
   Comment = (comment) => (
     <Comment
-      author={<a>{comment.user_name}</a>}
+      author={<a>{comment.display_name}</a>}
       avatar={
+      //   comment.photo?           <Avatar
+      //   src={<Image src={comment.photo} />}
+      // /> :
+
         <Button type="text" shape="circle">
-          AB
+          {firstTwoLetters(comment.display_name)}
       </Button>
       }
       content={
