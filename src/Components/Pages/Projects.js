@@ -19,14 +19,18 @@ class Projects extends React.Component {
   }
 
   handleAddProject(formData, projectsPage) {
+    const token = localStorage.getItem('serverApiToken')
+    const selected_stack = (formData.technologies || []).map(tech => tech.value)
     axios.post(URL+'/projects', {
       name: formData.name,
       description: formData.description,
       // difficulty_from : ,
       // difficulty_to : ,
-      selected_stack : formData.technologies.map(tech => tech.value),
+      selected_stack,
       summary: formData.summary
-    })
+      },
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
     .then(response => {
       const data = response.data[0];
       const newItemList = [data].concat(projectsPage.state.items)

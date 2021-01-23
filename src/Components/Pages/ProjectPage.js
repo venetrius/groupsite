@@ -62,8 +62,13 @@ class ProjectPage extends React.Component {
   );
 
   handleAddComment(formData, page) {
+    const token = localStorage.getItem('serverApiToken')
     const projectId = page.props.match.params.projectId;
-    axios.post(`${URL}/projects/${projectId}/comments`, formData)
+    axios.post(
+      `${URL}/projects/${projectId}/comments`,
+      formData,
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
     .then(response => {
       const data = response.data[0];
       const newItemList = [data].concat(page.state.comments)
