@@ -1,4 +1,6 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import Tag from 'antd/es/tag'
 
 const colors = [ 'pink', 'red', 'yellow', 'orange', 'cyan', 'green', 'blue', 'purple', 'geekblue', 'magenta', 'volcano', 'gold', 'lime']
@@ -12,12 +14,15 @@ const renderTechStack = (techStackAsString) => (
     )}
   </div>)
 
+const projectClicked = (history, projectId) => history.push(`/projects/${projectId}`)
+
 const ProjectSummary = (props) => {
   const project = props.props
   const stack = project.selected_stack || ''
+  let history = useHistory();
 
   return (
-    <div className={'project-summary'}>
+    <div onClick={() => projectClicked(history, project.id)} className={'project-summary'}>
       <h3 className={'centered-text'}><b>{project.name}</b></h3>
       <p> {project.description} </p>
       {renderTechStack(stack)} <br/>

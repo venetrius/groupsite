@@ -16,7 +16,7 @@ const  Header = (props) => {
       const target = `${name.toLowerCase()}`
       return (
         <Menu.Item key={name} title={name}>
-          <Link to={target} onClick={() =>{props.onClick(name)}}> {name}</Link>
+          <Link to={`/${target}`} onClick={() =>{props.onClick(name)}}> {name}</Link>
         </Menu.Item>
       )
     }

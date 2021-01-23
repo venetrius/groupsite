@@ -6,6 +6,7 @@ import Events from './Components/Events';
 import Tutorial from './Components/Pages/Tutorial';
 import Home from './Components/Pages/Home';
 import Projects from './Components/Pages/Projects';
+import ProjectPage from './Components/Pages/ProjectPage';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -46,7 +47,9 @@ class App extends Component {
 
               <Route exact path="/tutorial" component={Tutorial} />
               <Route exact path="/login" component={Login} />
-              <Route exact patth="/projects" component={Projects} />
+              <Route exact path="/projects/" component={Projects} />
+              <Route exact path="/projects" component={Projects} />
+              <Route path={`/projects/:projectId`} component={ProjectPage} />
             </Switch>
           </div>
           <Footer></Footer>
