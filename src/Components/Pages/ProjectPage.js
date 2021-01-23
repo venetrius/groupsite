@@ -4,16 +4,11 @@ import { URL } from "../../config";
 import { Button, Comment, Avatar, Tooltip, Input } from "antd";
 import moment from "moment";
 import 'antd/dist/antd.css';
-import Tag from 'antd/es/tag'
-
 import { withRouter } from "react-router";
 import NewProject from '../Common/NewCommentForm'
+import TechStack from '../Common/TechStack/TechStack'
 
 const { TextArea } = Input;
-
-const colors = [ 'pink', 'red', 'yellow', 'orange', 'cyan', 'green', 'blue', 'purple', 'geekblue', 'magenta', 'volcano', 'gold', 'lime']
-
-const getRandomVariant = () => colors[Math.floor(Math.random()*colors.length)]
 
 class ProjectPage extends React.Component {
   constructor(props) {
@@ -43,13 +38,6 @@ class ProjectPage extends React.Component {
         }
       );
   }
-
-  renderTechStack = (techStackAsString) => (
-    <div>
-      {techStackAsString.split(',').map(tech =>
-        <Tag key={`${tech}-badge`} color={getRandomVariant()} style={{marginRight: "20px", float: 'right'}}> {tech} </Tag>
-      )}
-    </div>)
 
   Comment = (comment) => (
     <Comment
@@ -107,7 +95,8 @@ class ProjectPage extends React.Component {
 
         <span> Created at</span>
         <span> {moment(project.created_at).format("YYYY/MM/DD")}</span>
-        {this.renderTechStack(project.selected_stack)}
+        <TechStack className="right" techStackAsString={project.selected_stack}/>
+
         <div></div>
         <div>
           <h3>Description</h3>
@@ -125,7 +114,6 @@ class ProjectPage extends React.Component {
         <div style={{ maxWidth: "80%", margin: "auto" }}>
           <NewProject onSubmit={this.handleAddComment} page={this}/>
         </div>
-
       </div>
     );
   }
