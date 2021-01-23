@@ -1,9 +1,9 @@
 import React from "react";
-import Project from './Project';
+import ProjectSummary from './ProjectSummary';
 import ProjectForm from './NewProject'
 import axios from 'axios';
 import Button from 'antd/es/button';
-
+import { URL } from "../../config";
 
 class Projects extends React.Component {
   constructor(props) {
@@ -16,18 +16,21 @@ class Projects extends React.Component {
       list: [],
       keys : {}
     };
-    this.url = 'https://yyc-server.herokuapp.com'
   }
 
   handleAddProject(formData, projectsPage) {
-    axios.post(projectsPage.url+'/projects', {
+    const token = localStorage.getItem('serverApiToken')
+    const selected_stack = (formData.technologies || []).map(tech => tech.value)
+    axios.post(URL+'/projects', {
       name: formData.name,
       description: formData.description,
       // difficulty_from : ,
       // difficulty_to : ,
-      selected_stack : formData.technologies.map(tech => tech.value)
-
-    })
+      selected_stack,
+      summary: formData.summary
+      },
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
     .then(response => {
       const data = response.data[0];
       const newItemList = [data].concat(projectsPage.state.items)
@@ -43,7 +46,7 @@ class Projects extends React.Component {
   }
 
   componentDidMount() {
-    fetch(this.url + "/projects")
+    fetch(URL + "/projects")
       .then(res => res.json())
       .then(
         (result) => {
@@ -90,7 +93,7 @@ class Projects extends React.Component {
           </Button>
           <br/>
           <br/>
-          { items.map(project => <Project props={project} key={project.id}></Project> ) }
+          { items.map(project => <ProjectSummary props={project} key={project.id} /> ) }
         </div>
       );
     }

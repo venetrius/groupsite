@@ -2,11 +2,27 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router'
 import Axios from 'axios';
 import githubIcon from '../../GitHub.png';
-
+import { URL } from "../../config";
 import qs from 'query-string';
 import { useGlobal } from '../../state';
 
-const backendEndpoint = 'https://yyc-server.herokuapp.com';
+const backendEndpoint = URL
+
+function fetchUser(token, setLoadUser, setGlobal) {
+  if(!token) return
+  setLoadUser(true)
+  Axios.get(`${backendEndpoint}/user/profile`, { headers: { Authorization: `Bearer ${token}` } })
+  .then((res) => {
+    setGlobal({ ...global, user: res.data.data })
+    setLoadUser(false)
+  })
+  .catch(error => {
+    setLoadUser(false);
+    localStorage.removeItem('serverApiToken');
+    console.log('error', error)
+  })
+}
+
 const getTokenFromQuery = () => {
   const queryValues = qs.parse(window.location.search);
   return queryValues.token
@@ -17,27 +33,27 @@ const Login = () => {
   const [loadUser, setLoadUser] = useState(false)
   const [ global, setGlobal, user ] = useGlobal()
 
-  function fetchUser(token) {
-    setLoadUser(true)
-    Axios.get(`${backendEndpoint}/user/profile`, { headers: { Authorization: `Bearer ${token}` } })
-    .then((res) => {
-      setGlobal({ ...global, user: res.data.data })
-      setLoadUser(false)
-    })
-    .catch(error => { setLoadUser(false); console.log('error', error)})
-  }
-
   if(global.user) {
     return <Redirect to="/projects" />
   }
+  const storedToken = localStorage.getItem('serverApiToken')
   const token = getTokenFromQuery()
 
-  if (token && !loadingSpinner) {
-    if (!user && !loadUser) {
-      fetchUser(token)
-    }
+  if(storedToken && !loadUser) {
+    fetchUser(storedToken, setLoadUser, setGlobal)
+    return (
+      <div>
+        <button type="primary" loading={"loading"}>
+          Loading
+        </button>
+      </div>
+    )
+  }
+  else if (token && !loadingSpinner) {
+    localStorage.setItem('serverApiToken', token)
     setGlobal({...global, token})
     setLoadingSpinner(true)
+    return <Redirect to="/login" />
   }
 
   if (loadingSpinner) {
