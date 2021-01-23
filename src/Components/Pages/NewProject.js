@@ -64,6 +64,10 @@ const ProjectForm = props => {
         <Input />
       </Form.Item>
 
+      <Form.Item label="Summary" name="summary" rules={[]}>
+        <Input />
+      </Form.Item>
+
       <Form.Item label="Description" name="description" rules={[]}>
         <Input.TextArea />
       </Form.Item>

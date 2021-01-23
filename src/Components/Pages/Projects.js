@@ -25,8 +25,8 @@ class Projects extends React.Component {
       description: formData.description,
       // difficulty_from : ,
       // difficulty_to : ,
-      selected_stack : formData.technologies.map(tech => tech.value)
-
+      selected_stack : formData.technologies.map(tech => tech.value),
+      summary: formData.summary
     })
     .then(response => {
       const data = response.data[0];
