@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router'
 import Axios from 'axios';
 import githubIcon from '../../GitHub.png';
-
+import { URL } from "../../config";
 import qs from 'query-string';
 import { useGlobal } from '../../state';
 
-const backendEndpoint = 'https://yyc-server.herokuapp.com';
+const backendEndpoint = URL
 
 function fetchUser(token, setLoadUser, setGlobal) {
   if(!token) return

@@ -3,7 +3,7 @@ import ProjectSummary from './ProjectSummary';
 import ProjectForm from './NewProject'
 import axios from 'axios';
 import Button from 'antd/es/button';
-
+import { URL } from "../../config";
 
 class Projects extends React.Component {
   constructor(props) {
@@ -16,11 +16,10 @@ class Projects extends React.Component {
       list: [],
       keys : {}
     };
-    this.url = 'https://yyc-server.herokuapp.com'
   }
 
   handleAddProject(formData, projectsPage) {
-    axios.post(projectsPage.url+'/projects', {
+    axios.post(URL+'/projects', {
       name: formData.name,
       description: formData.description,
       // difficulty_from : ,
@@ -43,7 +42,7 @@ class Projects extends React.Component {
   }
 
   componentDidMount() {
-    fetch(this.url + "/projects")
+    fetch(URL + "/projects")
       .then(res => res.json())
       .then(
         (result) => {
