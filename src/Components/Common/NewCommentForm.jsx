@@ -34,8 +34,6 @@ const NewCommentForm = props => {
 
   const onFinishFailed = errorInfo => {} // this function has to be defined
 
-
-
   return (
     <Form
     form={form}
@@ -53,7 +51,7 @@ const NewCommentForm = props => {
         <Button type="secondary" onClick={()=> form.resetFields()}>
           Cancel
         </Button>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" disabled={props.disabled}>
           Submit
         </Button>
       </Form.Item>

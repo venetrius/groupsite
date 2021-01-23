@@ -5,7 +5,7 @@ import { Button, Comment, Avatar, Tooltip, Input } from "antd";
 import moment from "moment";
 import 'antd/dist/antd.css';
 import { withRouter } from "react-router";
-import NewProject from '../Common/NewCommentForm'
+import NewCommentForm from '../Common/NewCommentForm'
 import TechStack from '../Common/TechStack/TechStack'
 
 const { TextArea } = Input;
@@ -13,7 +13,9 @@ const { TextArea } = Input;
 class ProjectPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      resetCommentFormSwitch: false,
+    };
   }
 
   componentDidMount() {
@@ -64,6 +66,9 @@ class ProjectPage extends React.Component {
   handleAddComment(formData, page) {
     const token = localStorage.getItem('serverApiToken')
     const projectId = page.props.match.params.projectId;
+    page.setState({
+      sendData: true
+    })
     axios.post(
       `${URL}/projects/${projectId}/comments`,
       formData,
@@ -71,13 +76,18 @@ class ProjectPage extends React.Component {
     )
     .then(response => {
       const data = response.data[0];
-      const newItemList = [data].concat(page.state.comments)
+      const newItemList = [...page.state.comments, data]
       page.setState({
-        items: newItemList
+        comments: newItemList,
+        sendData: false,
+        resetCommentFormSwitch: !page.state.resetCommentFormSwitch
       })
     })
     .catch(error => {
       console.log(error);
+      page.setState({
+        sendData: false
+      })
     })
   }
 
@@ -117,7 +127,12 @@ class ProjectPage extends React.Component {
         </div>
         {comments.map(comment => this.Comment(comment))}
         <div style={{ maxWidth: "80%", margin: "auto" }}>
-          <NewProject onSubmit={this.handleAddComment} page={this}/>
+          <NewCommentForm
+            onSubmit={this.handleAddComment}
+            disabled={this.state.sendData}
+            page={this}
+            resetSwitch={this.state.resetCommentFormSwitch}
+            />
         </div>
       </div>
     );
